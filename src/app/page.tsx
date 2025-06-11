@@ -1,3 +1,4 @@
+import Header from '@/components/Header'
 import HeroChat from '@/components/HeroChat'
 import ServiceCards from '@/components/ServiceCards'
 import StepperTimeline from '@/components/StepperTimeline'
@@ -8,29 +9,32 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="bg-base-bg text-slate-900 min-h-screen">
+    <div className="bg-white text-slate-900 min-h-screen">
+      {/* Header */}
+      <Header />
+
       {/* Hero Section */}
-      <section id="hero" className="pt-24 relative overflow-hidden">
+      <section id="hero" className="relative">
         <HeroChat />
       </section>
 
       {/* What We Do Section */}
-      <section id="what-we-do" className="py-20 bg-white">
+      <section id="what-we-do" className="py-24 bg-white">
         <ServiceCards />
       </section>
 
       {/* How We Help Section */}
-      <section id="how-we-help" className="py-20 bg-gradient-to-b from-white to-light-blue-bg">
+      <section id="how-we-help" className="py-24 bg-gradient-to-b from-white to-light-blue-bg">
         <StepperTimeline />
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-white">
+      <section id="testimonials" className="py-24 bg-white">
         <TestimonialsCarousel />
       </section>
 
       {/* Case Studies & Blog Section */}
-      <section id="case-blog" className="py-20 bg-lighter-blue-bg">
+      <section id="case-blog" className="py-24 bg-lighter-blue-bg">
         <CaseBlogGrid />
       </section>
 
@@ -39,6 +43,6 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
-    </main>
+    </div>
   )
 }

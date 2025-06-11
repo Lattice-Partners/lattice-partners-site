@@ -38,7 +38,7 @@ export default function ServiceCards() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-16"
+        className="text-center mb-20"
       >
         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
           What We Do
@@ -61,15 +61,15 @@ export default function ServiceCards() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ 
                 y: -4, 
-                boxShadow: "0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.05)"
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
               }}
-              className="bg-white rounded-card p-8 shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer"
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer border border-slate-100"
             >
               <div className="mb-6">
-                <div className="w-12 h-12 bg-secondary-gradient rounded-xl flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-azure-600 rounded-xl flex items-center justify-center mb-6">
                   <Icon className="w-6 h-6 text-white" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">
                   {service.title}
                 </h3>
                 <p className="text-azure-600 font-semibold text-sm mb-4">
