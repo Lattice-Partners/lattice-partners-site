@@ -1,5 +1,4 @@
 import GhostContentAPI from '@tryghost/content-api'
-import { LucideIcon } from 'lucide-react'
 
 // Initialize Ghost Content API
 const api = new GhostContentAPI({
@@ -54,7 +53,6 @@ export interface ContentItem {
   category: string
   url: string
   featuredImage?: string
-  kpis?: { label: string; value: string; icon: LucideIcon }[]
 }
 
 // Fetch all posts
@@ -128,51 +126,16 @@ export function transformGhostPost(post: GhostPost): ContentItem {
     date: post.published_at || post.created_at || new Date().toISOString(),
     readTime: `${post.reading_time || 5} min read`,
     category: primaryTag,
-    url: `/articles/${extractSlug(post)}`, // Use internal URL instead of Ghost URL
-    featuredImage: post.feature_image || undefined,
-    // KPIs will be extracted from post content or custom fields later
-    kpis: undefined
+    url: `/articles/${extractSlug(post)}`,
+    featuredImage: post.feature_image || undefined
   }
 }
 
 // Get content for the Case Studies & Insights section
 export async function getContentForSection(): Promise<ContentItem[]> {
   try {
-    console.log('🔗 Calling Ghost API getAllPosts...')
     const allPosts = await getAllPosts()
-    console.log(`📚 Retrieved ${allPosts.length} total posts from Ghost`)
-    
-    // Log all posts and their tags for debugging
-    allPosts.forEach((post, index: number) => {
-      const tags = post.tags?.map((tag) => tag.name).join(', ') || 'No tags'
-      console.log(`${index + 1}. "${post.title}" - Tags: [${tags}]`)
-    })
-    
-    // TEMPORARY: Return ALL posts to test integration (normally we'd filter by tags)
-    console.log(`🚀 Returning ALL ${allPosts.length} posts for testing`)
     return allPosts.map((post) => transformGhostPost(post as GhostPost))
-    
-    /* 
-    // Filter posts that have either "Case Studies" or "Insights" tags
-    const relevantPosts = allPosts.filter((post) => {
-      const hasRelevantTag = post.tags?.some((tag) => 
-        tag.name === 'Case Studies' || 
-        tag.name === 'Insights' ||
-        tag.slug === 'case-studies' ||
-        tag.slug === 'insights'
-      )
-      
-      if (hasRelevantTag) {
-        console.log(`✅ Post "${post.title}" has relevant tags`)
-      }
-      
-      return hasRelevantTag
-    })
-    
-    console.log(`🎯 Found ${relevantPosts.length} posts with Case Studies/Insights tags`)
-    
-    return relevantPosts.map((post) => transformGhostPost(post as GhostPost))
-    */
   } catch (error) {
     console.error('❌ Error fetching content for section:', error)
     return []

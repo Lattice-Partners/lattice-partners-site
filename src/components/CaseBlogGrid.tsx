@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Calendar, ArrowRight, TrendingUp, Users, Zap, LucideIcon } from 'lucide-react'
 import { ContentItem } from '@/lib/ghost'
 import Link from 'next/link'
 
@@ -12,7 +11,7 @@ interface CaseBlogGridProps {
   ghostContent?: ContentItem[]
 }
 
-const content: ContentItem[] = [
+const fallbackContent: ContentItem[] = [
   {
     id: '1',
     type: 'case-study',
@@ -21,12 +20,7 @@ const content: ContentItem[] = [
     date: '2024-01-15',
     readTime: '8 min read',
     category: 'E-commerce',
-    url: '#',
-    kpis: [
-      { label: 'Sales Increase', value: '+40%', icon: TrendingUp },
-      { label: 'Customer Engagement', value: '+65%', icon: Users },
-      { label: 'Implementation Time', value: '6 weeks', icon: Zap }
-    ]
+    url: '#'
   },
   {
     id: '2',
@@ -46,12 +40,7 @@ const content: ContentItem[] = [
     date: '2024-01-08',
     readTime: '10 min read',
     category: 'Manufacturing',
-    url: '#',
-    kpis: [
-      { label: 'Cost Savings', value: '$3M', icon: TrendingUp },
-      { label: 'Downtime Reduction', value: '-75%', icon: Zap },
-      { label: 'Efficiency Gain', value: '+30%', icon: Users }
-    ]
+    url: '#'
   },
   {
     id: '4',
@@ -71,12 +60,7 @@ const content: ContentItem[] = [
     date: '2024-01-03',
     readTime: '6 min read',
     category: 'Financial Services',
-    url: '#',
-    kpis: [
-      { label: 'Automation Rate', value: '80%', icon: Zap },
-      { label: 'Processing Speed', value: '+90%', icon: TrendingUp },
-      { label: 'Accuracy', value: '99.2%', icon: Users }
-    ]
+    url: '#'
   },
   {
     id: '6',
@@ -99,8 +83,7 @@ const filters = [
 export default function CaseBlogGrid({ ghostContent }: CaseBlogGridProps) {
   const [activeFilter, setActiveFilter] = useState<ContentType>('all')
 
-  // Use Ghost content if available, otherwise fall back to hardcoded content
-  const allContent = ghostContent && ghostContent.length > 0 ? ghostContent : content
+  const allContent = ghostContent && ghostContent.length > 0 ? ghostContent : fallbackContent
 
   const filteredContent = allContent.filter(item => {
     if (activeFilter === 'all') return true
@@ -143,7 +126,7 @@ export default function CaseBlogGrid({ ghostContent }: CaseBlogGridProps) {
             <motion.article
               whileHover={{ y: -4, scale: 1.02 }}
               transition={{ duration: 0.2 }}
-              className="bg-white rounded-card p-6 shadow-card hover:shadow-card-hover transition-all duration-200 cursor-pointer group h-full"
+              className="bg-white rounded-card p-6 shadow-card hover:shadow-card-hover transition-all duration-200 cursor-pointer group h-full flex flex-col"
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-4">
@@ -154,41 +137,22 @@ export default function CaseBlogGrid({ ghostContent }: CaseBlogGridProps) {
                 }`}>
                   {item.category}
                 </span>
-                <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-azure-600 group-hover:translate-x-1 transition-all duration-200" />
+                <span className="text-slate-400 group-hover:text-azure-600 transition-colors duration-200">→</span>
               </div>
 
-              {/* Title */}
-              <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-azure-600 transition-colors duration-200">
-                {item.title}
-              </h3>
-
-              {/* Excerpt */}
-              <p className="text-slate-600 mb-4 line-clamp-3 leading-relaxed">
-                {item.excerpt}
-              </p>
-
-              {/* KPIs for case studies */}
-              {item.kpis && (
-                <div className="mb-4 p-4 bg-gradient-to-r from-light-blue-bg to-lighter-blue-bg rounded-lg">
-                  <div className="grid grid-cols-3 gap-2">
-                    {item.kpis.map((kpi, kpiIndex) => {
-                      const Icon = kpi.icon
-                      return (
-                        <div key={kpiIndex} className="text-center">
-                          <Icon className="w-4 h-4 text-azure-600 mx-auto mb-1" strokeWidth={1.5} />
-                          <div className="text-sm font-bold text-slate-900">{kpi.value}</div>
-                          <div className="text-xs text-slate-600">{kpi.label}</div>
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              )}
+              {/* Content */}
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-azure-600 transition-colors duration-200">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 mb-4 line-clamp-3 leading-relaxed">
+                  {item.excerpt}
+                </p>
+              </div>
 
               {/* Meta */}
-              <div className="flex items-center text-sm text-slate-500 pt-4 border-t border-slate-100 mt-auto">
-                <Calendar className="w-4 h-4 mr-2" strokeWidth={1.5} />
-                <span className="mr-4">{new Date(item.date).toLocaleDateString()}</span>
+              <div className="flex items-center justify-between text-sm text-slate-500 pt-4 border-t border-slate-100 mt-auto">
+                <span>{new Date(item.date).toLocaleDateString()}</span>
                 <span>{item.readTime}</span>
               </div>
             </motion.article>
