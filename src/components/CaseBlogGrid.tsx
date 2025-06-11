@@ -3,29 +3,24 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, ArrowRight, TrendingUp, Users, Zap, LucideIcon } from 'lucide-react'
+import { ContentItem } from '@/lib/ghost'
 
-type ContentType = 'all' | 'success-stories' | 'insights'
+type ContentType = 'all' | 'case-studies' | 'insights'
 
-interface ContentItem {
-  id: number
-  type: 'success-story' | 'insight'
-  title: string
-  excerpt: string
-  date: string
-  readTime: string
-  category: string
-  kpis?: { label: string; value: string; icon: LucideIcon }[]
+interface CaseBlogGridProps {
+  ghostContent?: ContentItem[]
 }
 
 const content: ContentItem[] = [
   {
-    id: 1,
-    type: 'success-story',
+    id: '1',
+    type: 'case-study',
     title: 'How RetailTech Increased Sales by 40% with AI Recommendations',
     excerpt: 'Discover how we implemented a personalized recommendation engine that transformed customer experience and boosted revenue.',
     date: '2024-01-15',
     readTime: '8 min read',
     category: 'E-commerce',
+    url: '#',
     kpis: [
       { label: 'Sales Increase', value: '+40%', icon: TrendingUp },
       { label: 'Customer Engagement', value: '+65%', icon: Users },
@@ -33,22 +28,24 @@ const content: ContentItem[] = [
     ]
   },
   {
-    id: 2,
+    id: '2',
     type: 'insight',
     title: 'The Future of AI in Customer Service: Beyond Chatbots',
     excerpt: 'Exploring emerging trends in AI-powered customer service and what businesses need to know to stay ahead.',
     date: '2024-01-10',
     readTime: '5 min read',
-    category: 'AI Trends'
+    category: 'AI Trends',
+    url: '#'
   },
   {
-    id: 3,
-    type: 'success-story',
+    id: '3',
+    type: 'case-study',
     title: 'Manufacturing Giant Cuts Costs by $3M with Predictive Maintenance',
     excerpt: 'Learn how AI-powered predictive analytics transformed equipment maintenance and dramatically reduced downtime.',
     date: '2024-01-08',
     readTime: '10 min read',
     category: 'Manufacturing',
+    url: '#',
     kpis: [
       { label: 'Cost Savings', value: '$3M', icon: TrendingUp },
       { label: 'Downtime Reduction', value: '-75%', icon: Zap },
@@ -56,22 +53,24 @@ const content: ContentItem[] = [
     ]
   },
   {
-    id: 4,
+    id: '4',
     type: 'insight',
     title: 'Building AI Teams: Skills and Strategies for 2024',
     excerpt: 'A comprehensive guide to building and scaling AI capabilities within your organization.',
     date: '2024-01-05',
     readTime: '7 min read',
-    category: 'Team Building'
+    category: 'Team Building',
+    url: '#'
   },
   {
-    id: 5,
-    type: 'success-story',
+    id: '5',
+    type: 'case-study',
     title: 'FinTech Startup Automates 80% of Credit Decisions with AI',
     excerpt: 'How we helped a growing fintech company scale their credit assessment process without compromising accuracy.',
     date: '2024-01-03',
     readTime: '6 min read',
     category: 'Financial Services',
+    url: '#',
     kpis: [
       { label: 'Automation Rate', value: '80%', icon: Zap },
       { label: 'Processing Speed', value: '+90%', icon: TrendingUp },
@@ -79,28 +78,32 @@ const content: ContentItem[] = [
     ]
   },
   {
-    id: 6,
+    id: '6',
     type: 'insight',
     title: 'Data Privacy in AI: Best Practices for Responsible Implementation',
     excerpt: 'Essential guidelines for implementing AI solutions while maintaining strict data privacy and compliance standards.',
     date: '2024-01-01',
     readTime: '9 min read',
-    category: 'Privacy & Ethics'
+    category: 'Privacy & Ethics',
+    url: '#'
   }
 ]
 
 const filters = [
   { id: 'all', label: 'All' },
-  { id: 'success-stories', label: 'Success Stories' },
+  { id: 'case-studies', label: 'Case Studies' },
   { id: 'insights', label: 'Insights' }
 ]
 
-export default function CaseBlogGrid() {
+export default function CaseBlogGrid({ ghostContent }: CaseBlogGridProps) {
   const [activeFilter, setActiveFilter] = useState<ContentType>('all')
 
-  const filteredContent = content.filter(item => {
+  // Use Ghost content if available, otherwise fall back to hardcoded content
+  const allContent = ghostContent && ghostContent.length > 0 ? ghostContent : content
+
+  const filteredContent = allContent.filter(item => {
     if (activeFilter === 'all') return true
-    if (activeFilter === 'success-stories') return item.type === 'success-story'
+    if (activeFilter === 'case-studies') return item.type === 'case-study'
     if (activeFilter === 'insights') return item.type === 'insight'
     return true
   })
@@ -143,7 +146,7 @@ export default function CaseBlogGrid() {
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                item.type === 'success-story' 
+                item.type === 'case-study' 
                   ? 'bg-gradient-to-r from-gradient-start to-gradient-end text-white'
                   : 'bg-light-blue-bg text-azure-600'
               }`}>

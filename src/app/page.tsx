@@ -3,7 +3,7 @@ import HeroChat from '@/components/HeroChat'
 import ServiceCards from '@/components/ServiceCards'
 import StepperTimeline from '@/components/StepperTimeline'
 import TestimonialsCarousel from '@/components/TestimonialsCarousel'
-import CaseBlogGrid from '@/components/CaseBlogGrid'
+import CaseBlogGridServer from '@/components/CaseBlogGridServer'
 import CtaBanner from '@/components/CtaBanner'
 import Footer from '@/components/Footer'
 
@@ -35,7 +35,7 @@ export default function Home() {
 
       {/* Case Studies & Blog Section */}
       <section id="case-blog" className="py-20 bg-lighter-blue-bg scroll-mt-16">
-        <CaseBlogGrid />
+        <CaseBlogGridServer />
       </section>
 
       {/* CTA Banner */}

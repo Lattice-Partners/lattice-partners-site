@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tryghost/content-api": "^1.11.26",
     "autoprefixer": "^10.4.21",
     "clsx": "^2.1.1",
     "framer-motion": "^12.16.0",
@@ -26,6 +27,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/tryghost__content-api": "^1.3.17",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
     "typescript": "^5"
