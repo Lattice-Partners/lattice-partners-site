@@ -32,17 +32,12 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-white text-slate-600 border-t border-slate-100">
+    <footer id="contact" className="bg-white text-slate-600 border-t border-slate-100 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand section */}
           <div className="lg:col-span-2">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+            <div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">
                 AI Consulting
               </h3>
@@ -55,7 +50,7 @@ export default function Footer() {
               <div className="space-y-3 mb-8">
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-azure-600" strokeWidth={1.5} />
-                  <span>hello@aiconsulting.com</span>
+                  <span>hello@latticepartners.ai</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-azure-600" strokeWidth={1.5} />
@@ -83,16 +78,11 @@ export default function Footer() {
                   )
                 })}
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Services */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
+          <div>
             <h4 className="text-lg font-semibold text-slate-900 mb-6">Services</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
@@ -106,15 +96,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Company */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          <div>
             <h4 className="text-lg font-semibold text-slate-900 mb-6">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
@@ -128,15 +113,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Resources */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
+          <div>
             <h4 className="text-lg font-semibold text-slate-900 mb-6">Resources</h4>
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
@@ -150,17 +130,11 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         </div>
 
         {/* Bottom section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 pt-8 border-t border-slate-200"
-        >
+        <div className="mt-16 pt-8 border-t border-slate-200">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-slate-500">
               © 2024 AI Consulting. All rights reserved.
@@ -177,7 +151,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   )

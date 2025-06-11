@@ -29,13 +29,7 @@ const steps = [
 export default function StepperTimeline() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-16"
-      >
+      <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
           How We Help
         </h2>
@@ -43,24 +37,20 @@ export default function StepperTimeline() {
           Our proven process takes you from AI curiosity to confident implementation, 
           with support every step of the way.
         </p>
-      </motion.div>
+      </div>
 
       <div className="relative">
         {/* Timeline line */}
         <div className="absolute left-1/2 transform -translate-x-0.5 w-0.5 h-full bg-gradient-to-b from-azure-600 via-gradient-start to-gradient-end hidden lg:block" />
         
-        <div className="space-y-12 lg:space-y-16">
+        <div className="space-y-8 lg:space-y-12">
           {steps.map((step, index) => {
             const Icon = step.icon
             const isEven = index % 2 === 0
             
             return (
-              <motion.div
+              <div
                 key={step.title}
-                initial={{ opacity: 0, x: isEven ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`relative flex items-center ${
                   isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
                 } flex-col lg:gap-12`}
@@ -97,7 +87,7 @@ export default function StepperTimeline() {
 
                 {/* Spacer for desktop */}
                 <div className="w-1/2 hidden lg:block" />
-              </motion.div>
+              </div>
             )
           })}
         </div>

@@ -41,20 +41,14 @@ export default function TestimonialsCarousel() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-16"
-      >
+      <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
           What Our Clients Say
         </h2>
         <p className="text-xl text-slate-600 max-w-3xl mx-auto">
           Real results from real businesses who trusted us with their AI transformation.
         </p>
-      </motion.div>
+      </div>
 
       <div className="relative max-w-4xl mx-auto">
         <AnimatePresence mode="wait">

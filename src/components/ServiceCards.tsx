@@ -33,13 +33,7 @@ const services = [
 export default function ServiceCards() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-20"
-      >
+      <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
           What We Do
         </h2>
@@ -47,7 +41,7 @@ export default function ServiceCards() {
           We help businesses harness the power of AI through strategic consulting, 
           hands-on training, and custom implementations.
         </p>
-      </motion.div>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {services.map((service, index) => {
@@ -55,10 +49,6 @@ export default function ServiceCards() {
           return (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={{ y: -2 }}
               className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer border border-slate-100"
             >

@@ -107,13 +107,7 @@ export default function CaseBlogGrid() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-16"
-      >
+      <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
           Case Studies & Insights
         </h2>
@@ -137,16 +131,12 @@ export default function CaseBlogGrid() {
             </button>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredContent.map((item, index) => (
           <motion.article
             key={item.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
             whileHover={{ y: -2 }}
             className="bg-white rounded-card p-6 shadow-card hover:shadow-card-hover transition-all duration-200 cursor-pointer group"
           >
@@ -201,13 +191,7 @@ export default function CaseBlogGrid() {
       </div>
 
       {/* Load more button */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-center mt-12"
-      >
+      <div className="text-center mt-12">
         <motion.button
           whileHover={{ y: -1 }}
           whileTap={{ y: 0 }}
@@ -215,7 +199,7 @@ export default function CaseBlogGrid() {
         >
           Load More Articles
         </motion.button>
-      </motion.div>
+      </div>
     </div>
   )
 } 
