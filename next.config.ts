@@ -20,6 +20,12 @@ const nextConfig: NextConfig = {
         hostname: '*.ghost.io',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static.ghost.org',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

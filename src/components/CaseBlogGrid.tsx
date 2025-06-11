@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, ArrowRight, TrendingUp, Users, Zap, LucideIcon } from 'lucide-react'
 import { ContentItem } from '@/lib/ghost'
+import Link from 'next/link'
 
 type ContentType = 'all' | 'case-studies' | 'insights'
 
@@ -138,58 +139,60 @@ export default function CaseBlogGrid({ ghostContent }: CaseBlogGridProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredContent.map((item) => (
-          <motion.article
-            key={item.id}
-            whileHover={{ y: -2 }}
-            className="bg-white rounded-card p-6 shadow-card hover:shadow-card-hover transition-all duration-200 cursor-pointer group"
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between mb-4">
-              <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                item.type === 'case-study' 
-                  ? 'bg-gradient-to-r from-gradient-start to-gradient-end text-white'
-                  : 'bg-light-blue-bg text-azure-600'
-              }`}>
-                {item.category}
-              </span>
-              <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-azure-600 group-hover:translate-x-1 transition-all duration-200" />
-            </div>
-
-            {/* Title */}
-            <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-azure-600 transition-colors duration-200">
-              {item.title}
-            </h3>
-
-            {/* Excerpt */}
-            <p className="text-slate-600 mb-4 line-clamp-3 leading-relaxed">
-              {item.excerpt}
-            </p>
-
-            {/* KPIs for success stories */}
-            {item.kpis && (
-              <div className="mb-4 p-4 bg-gradient-to-r from-light-blue-bg to-lighter-blue-bg rounded-lg">
-                <div className="grid grid-cols-3 gap-2">
-                  {item.kpis.map((kpi, kpiIndex) => {
-                    const Icon = kpi.icon
-                    return (
-                      <div key={kpiIndex} className="text-center">
-                        <Icon className="w-4 h-4 text-azure-600 mx-auto mb-1" strokeWidth={1.5} />
-                        <div className="text-sm font-bold text-slate-900">{kpi.value}</div>
-                        <div className="text-xs text-slate-600">{kpi.label}</div>
-                      </div>
-                    )
-                  })}
-                </div>
+          <Link key={item.id} href={item.url} className="block">
+            <motion.article
+              whileHover={{ y: -4, scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+              className="bg-white rounded-card p-6 shadow-card hover:shadow-card-hover transition-all duration-200 cursor-pointer group h-full"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between mb-4">
+                <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                  item.type === 'case-study' 
+                    ? 'bg-gradient-to-r from-gradient-start to-gradient-end text-white'
+                    : 'bg-light-blue-bg text-azure-600'
+                }`}>
+                  {item.category}
+                </span>
+                <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-azure-600 group-hover:translate-x-1 transition-all duration-200" />
               </div>
-            )}
 
-            {/* Meta */}
-            <div className="flex items-center text-sm text-slate-500 pt-4 border-t border-slate-100">
-              <Calendar className="w-4 h-4 mr-2" strokeWidth={1.5} />
-              <span className="mr-4">{new Date(item.date).toLocaleDateString()}</span>
-              <span>{item.readTime}</span>
-            </div>
-          </motion.article>
+              {/* Title */}
+              <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-azure-600 transition-colors duration-200">
+                {item.title}
+              </h3>
+
+              {/* Excerpt */}
+              <p className="text-slate-600 mb-4 line-clamp-3 leading-relaxed">
+                {item.excerpt}
+              </p>
+
+              {/* KPIs for case studies */}
+              {item.kpis && (
+                <div className="mb-4 p-4 bg-gradient-to-r from-light-blue-bg to-lighter-blue-bg rounded-lg">
+                  <div className="grid grid-cols-3 gap-2">
+                    {item.kpis.map((kpi, kpiIndex) => {
+                      const Icon = kpi.icon
+                      return (
+                        <div key={kpiIndex} className="text-center">
+                          <Icon className="w-4 h-4 text-azure-600 mx-auto mb-1" strokeWidth={1.5} />
+                          <div className="text-sm font-bold text-slate-900">{kpi.value}</div>
+                          <div className="text-xs text-slate-600">{kpi.label}</div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Meta */}
+              <div className="flex items-center text-sm text-slate-500 pt-4 border-t border-slate-100 mt-auto">
+                <Calendar className="w-4 h-4 mr-2" strokeWidth={1.5} />
+                <span className="mr-4">{new Date(item.date).toLocaleDateString()}</span>
+                <span>{item.readTime}</span>
+              </div>
+            </motion.article>
+          </Link>
         ))}
       </div>
 

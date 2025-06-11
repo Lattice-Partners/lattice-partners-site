@@ -51,6 +51,30 @@ export async function getPostsByTag(tagSlug: string) {
   }
 }
 
+// Fetch single post by slug
+export async function getPostBySlug(slug: string) {
+  try {
+    const post = await api.posts.read({ slug }, {
+      include: ['tags', 'authors']
+    })
+    return post
+  } catch (error) {
+    console.error(`Error fetching post with slug ${slug}:`, error)
+    return null
+  }
+}
+
+// Extract slug from Ghost URL or generate from title
+export function extractSlug(post: any): string {
+  if (post.slug) return post.slug
+  if (post.url) {
+    const urlParts = post.url.split('/')
+    return urlParts[urlParts.length - 2] || urlParts[urlParts.length - 1]
+  }
+  // Fallback: create slug from title
+  return post.title?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'untitled'
+}
+
 // Convert Ghost post to our ContentItem format
 export function transformGhostPost(post: any): ContentItem {
   const primaryTag = post.primary_tag?.name || 'General'
@@ -67,7 +91,7 @@ export function transformGhostPost(post: any): ContentItem {
     date: post.published_at || post.created_at || new Date().toISOString(),
     readTime: `${post.reading_time || 5} min read`,
     category: primaryTag,
-    url: post.url || '#',
+    url: `/articles/${extractSlug(post)}`, // Use internal URL instead of Ghost URL
     featuredImage: post.feature_image || undefined,
     // KPIs will be extracted from post content or custom fields later
     kpis: undefined
