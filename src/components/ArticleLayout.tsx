@@ -6,7 +6,16 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 interface ArticleLayoutProps {
-  post: any
+  post: {
+    title: string
+    excerpt?: string
+    published_at: string
+    reading_time?: number
+    primary_author?: { name: string }
+    feature_image?: string
+    html: string
+    tags?: Array<{ name: string }>
+  } | null
 }
 
 export default function ArticleLayout({ post }: ArticleLayoutProps) {
@@ -15,7 +24,7 @@ export default function ArticleLayout({ post }: ArticleLayoutProps) {
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-900 mb-4">Article Not Found</h1>
-          <p className="text-slate-600 mb-8">The article you're looking for doesn't exist.</p>
+          <p className="text-slate-600 mb-8">The article you&apos;re looking for doesn&apos;t exist.</p>
           <Link 
             href="/#case-blog" 
             className="inline-flex items-center px-6 py-3 bg-azure-600 text-white rounded-xl font-semibold hover:bg-azure-700 transition-colors"
@@ -63,7 +72,7 @@ export default function ArticleLayout({ post }: ArticleLayoutProps) {
             {/* Tags */}
             {post.tags && post.tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-6">
-                {post.tags.map((tag: any, index: number) => (
+                {post.tags.map((tag, index) => (
                   <span 
                     key={index}
                     className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-azure-600 text-white"

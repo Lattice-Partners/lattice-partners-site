@@ -7,6 +7,42 @@ const api = new GhostContentAPI({
   version: 'v5.0'
 })
 
+interface GhostTag {
+  id: string
+  name: string
+  slug: string
+  description?: string
+}
+
+interface GhostAuthor {
+  id: string
+  name: string
+  slug: string
+  profile_image?: string
+}
+
+interface GhostPost {
+  id: string
+  uuid?: string
+  title: string
+  slug: string
+  html: string
+  plaintext?: string
+  excerpt?: string
+  published_at: string
+  created_at: string
+  updated_at: string
+  featured: boolean
+  feature_image?: string
+  reading_time?: number
+  tags?: GhostTag[]
+  primary_tag?: GhostTag
+  authors?: GhostAuthor[]
+  primary_author?: GhostAuthor
+  url?: string
+  meta_description?: string
+}
+
 export interface ContentItem {
   id: string
   type: 'case-study' | 'insight'
@@ -17,7 +53,7 @@ export interface ContentItem {
   category: string
   url: string
   featuredImage?: string
-  kpis?: { label: string; value: string; icon: any }[]
+  kpis?: { label: string; value: string; icon: unknown }[]
 }
 
 // Fetch all posts
@@ -65,7 +101,7 @@ export async function getPostBySlug(slug: string) {
 }
 
 // Extract slug from Ghost URL or generate from title
-export function extractSlug(post: any): string {
+export function extractSlug(post: GhostPost): string {
   if (post.slug) return post.slug
   if (post.url) {
     const urlParts = post.url.split('/')
@@ -76,9 +112,9 @@ export function extractSlug(post: any): string {
 }
 
 // Convert Ghost post to our ContentItem format
-export function transformGhostPost(post: any): ContentItem {
+export function transformGhostPost(post: GhostPost): ContentItem {
   const primaryTag = post.primary_tag?.name || 'General'
-  const isInsight = post.tags?.some((tag: any) => 
+  const isInsight = post.tags?.some((tag: GhostTag) => 
     tag.name?.toLowerCase() === 'insights' || 
     tag.slug === 'insights'
   ) || false
@@ -106,19 +142,19 @@ export async function getContentForSection(): Promise<ContentItem[]> {
     console.log(`📚 Retrieved ${allPosts.length} total posts from Ghost`)
     
     // Log all posts and their tags for debugging
-    allPosts.forEach((post: any, index: number) => {
-      const tags = post.tags?.map((tag: any) => tag.name).join(', ') || 'No tags'
+    allPosts.forEach((post, index: number) => {
+      const tags = post.tags?.map((tag) => tag.name).join(', ') || 'No tags'
       console.log(`${index + 1}. "${post.title}" - Tags: [${tags}]`)
     })
     
     // TEMPORARY: Return ALL posts to test integration (normally we'd filter by tags)
     console.log(`🚀 Returning ALL ${allPosts.length} posts for testing`)
-    return allPosts.map(transformGhostPost)
+    return allPosts.map((post) => transformGhostPost(post as GhostPost))
     
     /* 
     // Filter posts that have either "Case Studies" or "Insights" tags
-    const relevantPosts = allPosts.filter((post: any) => {
-      const hasRelevantTag = post.tags?.some((tag: any) => 
+    const relevantPosts = allPosts.filter((post) => {
+      const hasRelevantTag = post.tags?.some((tag) => 
         tag.name === 'Case Studies' || 
         tag.name === 'Insights' ||
         tag.slug === 'case-studies' ||
@@ -134,7 +170,7 @@ export async function getContentForSection(): Promise<ContentItem[]> {
     
     console.log(`🎯 Found ${relevantPosts.length} posts with Case Studies/Insights tags`)
     
-    return relevantPosts.map(transformGhostPost)
+    return relevantPosts.map((post) => transformGhostPost(post as GhostPost))
     */
   } catch (error) {
     console.error('❌ Error fetching content for section:', error)

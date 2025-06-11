@@ -27,7 +27,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   return (
     <div className="bg-white text-slate-900 min-h-screen">
       <Header />
-      <ArticleLayout post={post} />
+      <ArticleLayout post={post as { title: string; excerpt?: string; published_at: string; reading_time?: number; primary_author?: { name: string }; feature_image?: string; html: string; tags?: Array<{ name: string }> }} />
       <Footer />
     </div>
   )
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: ArticlePageProps) {
       images: post.feature_image ? [post.feature_image] : [],
       type: 'article',
       publishedTime: post.published_at,
-      authors: post.authors?.map((author: any) => author.name) || [],
+      authors: post.authors?.map((author) => author.name || 'Unknown Author') || [],
     },
   }
 } 
