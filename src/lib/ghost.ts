@@ -1,4 +1,5 @@
 import GhostContentAPI from '@tryghost/content-api'
+import { LucideIcon } from 'lucide-react'
 
 // Initialize Ghost Content API
 const api = new GhostContentAPI({
@@ -53,7 +54,7 @@ export interface ContentItem {
   category: string
   url: string
   featuredImage?: string
-  kpis?: { label: string; value: string; icon: unknown }[]
+  kpis?: { label: string; value: string; icon: LucideIcon }[]
 }
 
 // Fetch all posts
