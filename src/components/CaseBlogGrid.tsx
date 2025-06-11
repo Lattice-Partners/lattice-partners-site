@@ -134,7 +134,7 @@ export default function CaseBlogGrid() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredContent.map((item, index) => (
+        {filteredContent.map((item) => (
           <motion.article
             key={item.id}
             whileHover={{ y: -2 }}

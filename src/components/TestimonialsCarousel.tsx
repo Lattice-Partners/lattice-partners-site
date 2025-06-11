@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import Image from 'next/image'
 
 const testimonials = [
   {
@@ -67,9 +68,11 @@ export default function TestimonialsCarousel() {
             <div className="flex items-center justify-center">
               {/* Avatar */}
               <div className="w-16 h-16 rounded-full overflow-hidden mr-4 ring-4 ring-azure-600/10">
-                <img
+                <Image
                   src={testimonials[currentIndex].avatar}
                   alt={testimonials[currentIndex].name}
+                  width={64}
+                  height={64}
                   className="w-full h-full object-cover"
                 />
               </div>
