@@ -54,7 +54,7 @@ export default function CtaBanner() {
             className="text-xl md:text-2xl mb-10 text-white/90 leading-relaxed max-w-3xl mx-auto"
           >
             Join hundreds of companies already using AI to work smarter, faster, and more efficiently. 
-            Let's explore what's possible for your business.
+            Let&apos;s explore what&apos;s possible for your business.
           </motion.p>
 
           {/* CTA Buttons */}

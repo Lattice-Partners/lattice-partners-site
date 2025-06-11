@@ -72,7 +72,7 @@ export default function TestimonialsCarousel() {
             </div>
 
             <blockquote className="text-xl md:text-2xl text-slate-700 leading-relaxed mb-8 font-medium">
-              "{testimonials[currentIndex].content}"
+              &ldquo;{testimonials[currentIndex].content}&rdquo;
             </blockquote>
 
             <div className="flex items-center">

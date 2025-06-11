@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Calendar, ArrowRight, TrendingUp, Users, Zap } from 'lucide-react'
+import { Calendar, ArrowRight, TrendingUp, Users, Zap, LucideIcon } from 'lucide-react'
 
 type ContentType = 'all' | 'success-stories' | 'insights'
 
@@ -14,7 +14,7 @@ interface ContentItem {
   date: string
   readTime: string
   category: string
-  kpis?: { label: string; value: string; icon: any }[]
+  kpis?: { label: string; value: string; icon: LucideIcon }[]
 }
 
 const content: ContentItem[] = [
