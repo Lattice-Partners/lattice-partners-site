@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const testimonials = [
   {
@@ -10,21 +10,21 @@ const testimonials = [
     title: "CTO",
     company: "TechFlow Systems",
     content: "The team transformed our customer service with AI chatbots that actually understand context. Our response time dropped by 70% and customer satisfaction soared.",
-    avatar: "SC"
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b77c?w=150&h=150&fit=crop&crop=face"
   },
   {
     name: "Marcus Johnson",
     title: "Head of Operations",
     company: "LogiCore Inc",
     content: "Their AI-powered inventory optimization saved us $2M in the first year. The implementation was seamless and the training was exceptional.",
-    avatar: "MJ"
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
   },
   {
     name: "Elena Rodriguez",
     title: "Product Manager",
     company: "InnovateLab",
     content: "We went from AI-curious to AI-powered in just 8 weeks. The prototype they built became our core product feature that doubled our user engagement.",
-    avatar: "ER"
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
   }
 ]
 
@@ -42,10 +42,10 @@ export default function TestimonialsCarousel() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.5 }}
         className="text-center mb-16"
       >
         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
@@ -60,29 +60,28 @@ export default function TestimonialsCarousel() {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="bg-white rounded-3xl p-8 md:p-12 shadow-card relative"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="bg-white rounded-2xl p-8 md:p-12 shadow-card"
           >
-            {/* Quote icon */}
-            <div className="absolute -top-4 left-8 w-8 h-8 bg-azure-600 rounded-full flex items-center justify-center">
-              <Quote className="w-4 h-4 text-white" strokeWidth={2} />
-            </div>
-
-            <blockquote className="text-xl md:text-2xl text-slate-700 leading-relaxed mb-8 font-medium">
+            <blockquote className="text-xl md:text-2xl text-slate-700 leading-relaxed mb-8 font-medium text-center">
               &ldquo;{testimonials[currentIndex].content}&rdquo;
             </blockquote>
 
-            <div className="flex items-center">
+            <div className="flex items-center justify-center">
               {/* Avatar */}
-              <div className="w-16 h-16 bg-secondary-gradient rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
-                {testimonials[currentIndex].avatar}
+              <div className="w-16 h-16 rounded-full overflow-hidden mr-4 ring-4 ring-azure-600/10">
+                <img
+                  src={testimonials[currentIndex].avatar}
+                  alt={testimonials[currentIndex].name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               
               {/* Author info */}
-              <div>
+              <div className="text-center">
                 <div className="font-bold text-slate-900 text-lg">
                   {testimonials[currentIndex].name}
                 </div>
@@ -97,19 +96,19 @@ export default function TestimonialsCarousel() {
         {/* Navigation buttons */}
         <div className="flex justify-center mt-8 space-x-4">
           <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={prev}
-            className="w-12 h-12 bg-white rounded-full shadow-card hover:shadow-card-hover flex items-center justify-center transition-all duration-300"
+            className="w-12 h-12 bg-white rounded-full shadow-card hover:shadow-card-hover flex items-center justify-center transition-all duration-200"
           >
             <ChevronLeft className="w-5 h-5 text-slate-600" strokeWidth={2} />
           </motion.button>
           
           <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={next}
-            className="w-12 h-12 bg-white rounded-full shadow-card hover:shadow-card-hover flex items-center justify-center transition-all duration-300"
+            className="w-12 h-12 bg-white rounded-full shadow-card hover:shadow-card-hover flex items-center justify-center transition-all duration-200"
           >
             <ChevronRight className="w-5 h-5 text-slate-600" strokeWidth={2} />
           </motion.button>
@@ -121,7 +120,7 @@ export default function TestimonialsCarousel() {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-3 h-3 rounded-full transition-all duration-200 ${
                 index === currentIndex 
                   ? 'bg-azure-600' 
                   : 'bg-slate-300 hover:bg-slate-400'

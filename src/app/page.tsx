@@ -19,22 +19,22 @@ export default function Home() {
       </section>
 
       {/* What We Do Section */}
-      <section id="what-we-do" className="py-24 bg-white">
+      <section id="what-we-do" className="py-20 bg-white">
         <ServiceCards />
       </section>
 
       {/* How We Help Section */}
-      <section id="how-we-help" className="py-24 bg-gradient-to-b from-white to-light-blue-bg">
+      <section id="how-we-help" className="py-20 bg-gradient-to-b from-white to-light-blue-bg">
         <StepperTimeline />
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-24 bg-white">
+      <section id="testimonials" className="py-20 bg-white">
         <TestimonialsCarousel />
       </section>
 
       {/* Case Studies & Blog Section */}
-      <section id="case-blog" className="py-24 bg-lighter-blue-bg">
+      <section id="case-blog" className="py-20 bg-lighter-blue-bg">
         <CaseBlogGrid />
       </section>
 

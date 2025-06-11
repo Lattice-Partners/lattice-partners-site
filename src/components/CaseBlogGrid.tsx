@@ -108,10 +108,10 @@ export default function CaseBlogGrid() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.5 }}
         className="text-center mb-16"
       >
         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
@@ -127,7 +127,7 @@ export default function CaseBlogGrid() {
             <button
               key={filter.id}
               onClick={() => setActiveFilter(filter.id as ContentType)}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
                 activeFilter === filter.id
                   ? 'bg-azure-600 text-white shadow-md'
                   : 'text-slate-600 hover:text-azure-600 hover:bg-light-blue-bg'
@@ -143,12 +143,12 @@ export default function CaseBlogGrid() {
         {filteredContent.map((item, index) => (
           <motion.article
             key={item.id}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            whileHover={{ y: -4 }}
-            className="bg-white rounded-card p-6 shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer group"
+            transition={{ duration: 0.4, delay: index * 0.05 }}
+            whileHover={{ y: -2 }}
+            className="bg-white rounded-card p-6 shadow-card hover:shadow-card-hover transition-all duration-200 cursor-pointer group"
           >
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
@@ -159,11 +159,11 @@ export default function CaseBlogGrid() {
               }`}>
                 {item.category}
               </span>
-              <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-azure-600 group-hover:translate-x-1 transition-all duration-300" />
+              <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-azure-600 group-hover:translate-x-1 transition-all duration-200" />
             </div>
 
             {/* Title */}
-            <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-azure-600 transition-colors duration-300">
+            <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-azure-600 transition-colors duration-200">
               {item.title}
             </h3>
 
@@ -202,16 +202,16 @@ export default function CaseBlogGrid() {
 
       {/* Load more button */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.3 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
         className="text-center mt-12"
       >
         <motion.button
-          whileHover={{ y: -2 }}
+          whileHover={{ y: -1 }}
           whileTap={{ y: 0 }}
-          className="px-8 py-4 bg-white border-2 border-azure-600 text-azure-600 rounded-xl font-semibold hover:bg-azure-600 hover:text-white transition-all duration-300"
+          className="px-8 py-4 bg-white border-2 border-azure-600 text-azure-600 rounded-xl font-semibold hover:bg-azure-600 hover:text-white transition-all duration-200"
         >
           Load More Articles
         </motion.button>

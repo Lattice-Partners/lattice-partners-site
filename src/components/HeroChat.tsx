@@ -4,57 +4,61 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Typewriter } from 'react-simple-typewriter'
 import { Send, Sparkles } from 'lucide-react'
-import heroContent from '@/content/hero.json'
+
+const conversations = [
+  {
+    question: "How can I level up my whole team with AI?",
+    answer: "Lattice Partners offers hands-on workshops that get your team confident and productive with AI tools in just weeks, not months."
+  },
+  {
+    question: "Can you build me an AI prototype quickly?",
+    answer: "We specialize in rapid prototyping—most of our proof-of-concept demos are running within 2 weeks of our first meeting."
+  },
+  {
+    question: "How do I know if AI will actually help my business?",
+    answer: "We start with a deep discovery process to find the highest-impact AI opportunities hiding in your current workflow."
+  },
+  {
+    question: "Will AI integration break my existing systems?",
+    answer: "Our custom integration approach ensures AI plays nice with your current tech stack—no rip-and-replace required."
+  }
+]
 
 export default function HeroChat() {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  const [currentConversationIndex, setCurrentConversationIndex] = useState(0)
   const [showAnswer, setShowAnswer] = useState(false)
 
   useEffect(() => {
     const timer = setInterval(() => {
       setShowAnswer(false)
       setTimeout(() => {
-        setCurrentQuestionIndex((prev) => (prev + 1) % heroContent.rotatingLines.length)
+        setCurrentConversationIndex((prev) => (prev + 1) % conversations.length)
         setShowAnswer(true)
       }, 500)
-    }, 4000)
+    }, 8000)
 
     // Show first answer
-    setTimeout(() => setShowAnswer(true), 1500)
+    setTimeout(() => setShowAnswer(true), 2000)
 
     return () => clearInterval(timer)
   }, [])
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20">
+    <div className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-32">
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-base-bg to-light-blue-bg opacity-60" />
       
-      {/* Floating elements */}
+      {/* Floating elements - simplified */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-azure-600/10 to-gradient-end/10 rounded-full blur-2xl"
-          animate={{
-            y: [0, -20, 0],
-            x: [0, 10, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ y: [-10, 10, -10] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
           className="absolute bottom-20 left-20 w-40 h-40 bg-gradient-to-tr from-gradient-start/10 to-azure-600/10 rounded-full blur-2xl"
-          animate={{
-            y: [0, 20, 0],
-            x: [0, -15, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ y: [10, -10, 10] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
@@ -62,9 +66,9 @@ export default function HeroChat() {
       <div className="relative w-full max-w-4xl z-10">
         {/* Hero heading */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 tracking-tight">
@@ -78,15 +82,15 @@ export default function HeroChat() {
           </p>
         </motion.div>
 
-        {/* Chat Interface */}
+        {/* Chat Interface - made shorter */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="bg-white rounded-2xl shadow-xl border border-slate-200/50 overflow-hidden max-w-2xl mx-auto"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="bg-white rounded-2xl shadow-lg border border-slate-200/50 overflow-hidden max-w-2xl mx-auto"
         >
           {/* Chat header */}
-          <div className="bg-slate-50 px-6 py-4 border-b border-slate-200/50">
+          <div className="bg-slate-50 px-6 py-3 border-b border-slate-200/50">
             <div className="flex items-center space-x-3">
               <div className="w-2 h-2 rounded-full bg-red-400"></div>
               <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
@@ -100,13 +104,13 @@ export default function HeroChat() {
             </div>
           </div>
 
-          {/* Chat messages */}
-          <div className="p-6 space-y-4 min-h-[300px] flex flex-col justify-center">
+          {/* Chat messages - shortened */}
+          <div className="p-6 space-y-4 min-h-[200px] flex flex-col justify-center">
             {/* User message */}
             <div className="flex justify-end">
-              <div className="bg-azure-600 text-white rounded-2xl rounded-tr-md px-4 py-3 max-w-xs">
+              <div className="bg-azure-600 text-white rounded-2xl rounded-tr-md px-4 py-3 max-w-sm">
                 <p className="text-sm font-medium">
-                  {heroContent.rotatingLines[currentQuestionIndex]}
+                  {conversations[currentConversationIndex].question}
                 </p>
               </div>
             </div>
@@ -115,17 +119,17 @@ export default function HeroChat() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: showAnswer ? 1 : 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.4 }}
               className="flex justify-start"
             >
-              <div className="bg-slate-100 text-slate-800 rounded-2xl rounded-tl-md px-4 py-3 max-w-xs">
+              <div className="bg-slate-100 text-slate-800 rounded-2xl rounded-tl-md px-4 py-3 max-w-sm">
                 {showAnswer && (
                   <p className="text-sm">
                     <Typewriter
-                      words={[heroContent.answer]}
+                      words={[conversations[currentConversationIndex].answer]}
                       cursor
                       cursorStyle='|'
-                      typeSpeed={30}
+                      typeSpeed={25}
                       deleteSpeed={0}
                       delaySpeed={0}
                     />
@@ -164,25 +168,18 @@ export default function HeroChat() {
           </div>
         </motion.div>
 
-        {/* CTA section */}
+        {/* CTA section - removed "Get Started" button */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
           className="text-center mt-12"
         >
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex justify-center">
             <motion.button
-              whileHover={{ y: -2 }}
+              whileHover={{ y: -1 }}
               whileTap={{ y: 0 }}
-              className="bg-azure-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-azure-700 transition-colors shadow-lg hover:shadow-xl"
-            >
-              Start Your AI Journey
-            </motion.button>
-            <motion.button
-              whileHover={{ y: -2 }}
-              whileTap={{ y: 0 }}
-              className="bg-white text-azure-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-slate-50 transition-colors border border-slate-200 shadow-lg hover:shadow-xl"
+              className="bg-white text-azure-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-slate-50 transition-colors border border-slate-200 shadow-lg"
             >
               Book a Consultation
             </motion.button>
