@@ -177,8 +177,6 @@ export default function HeroChat() {
         >
           <div className="flex justify-center">
             <motion.button
-              whileHover={{ y: -1 }}
-              whileTap={{ y: 0 }}
               className="bg-white text-azure-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-slate-50 transition-colors border border-slate-200 shadow-lg"
             >
               Book a Consultation

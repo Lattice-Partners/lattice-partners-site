@@ -124,8 +124,6 @@ export default function CaseBlogGrid({ ghostContent }: CaseBlogGridProps) {
         {filteredContent.map((item) => (
           <Link key={item.id} href={item.url} className="block">
             <motion.article
-              whileHover={{ y: -4, scale: 1.02 }}
-              transition={{ duration: 0.2 }}
               className="bg-white rounded-card p-6 shadow-card hover:shadow-card-hover transition-all duration-200 cursor-pointer group h-full flex flex-col"
             >
               {/* Header */}
@@ -163,8 +161,6 @@ export default function CaseBlogGrid({ ghostContent }: CaseBlogGridProps) {
       {/* Load more button */}
       <div className="text-center mt-12">
         <motion.button
-          whileHover={{ y: -1 }}
-          whileTap={{ y: 0 }}
           className="px-8 py-4 bg-white border-2 border-azure-600 text-azure-600 rounded-xl font-semibold hover:bg-azure-600 hover:text-white transition-all duration-200"
         >
           Load More Articles

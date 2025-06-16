@@ -68,18 +68,17 @@ export default function StepperTimeline() {
                 {/* Content card */}
                 <div className={`w-full lg:w-1/2 ${isEven ? '' : 'lg:text-right'}`}>
                   <motion.div
-                    whileHover={{ y: -2 }}
-                    className="bg-white rounded-card p-6 shadow-card hover:shadow-card-hover transition-all duration-300"
+                    className="bg-white rounded-card p-6 shadow-card"
                   >
-                    <div className={`flex items-center mb-4 ${isEven ? '' : 'lg:justify-end'}`}>
-                      <div className={`w-12 h-12 bg-secondary-gradient rounded-xl flex items-center justify-center ${isEven ? 'mr-4' : 'lg:ml-4 lg:order-2'}`}>
+                    <div className="flex items-center mb-4">
+                      <div className="w-12 h-12 bg-secondary-gradient rounded-xl flex items-center justify-center mr-4">
                         <Icon className="w-6 h-6 text-white" strokeWidth={1.5} />
                       </div>
-                      <div className={`${isEven ? '' : 'lg:order-1'}`}>
+                      <div>
                         <h3 className="text-2xl font-bold text-slate-900">{step.title}</h3>
                       </div>
                     </div>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-slate-600 leading-relaxed text-left">
                       {step.description}
                     </p>
                   </motion.div>

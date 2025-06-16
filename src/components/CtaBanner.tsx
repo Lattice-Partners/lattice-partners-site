@@ -8,9 +8,7 @@ export default function CtaBanner() {
     <div className="bg-gradient-to-r from-azure-600 to-azure-700 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+
           viewport={{ once: true }}
           className="max-w-4xl mx-auto"
         >
@@ -29,21 +27,12 @@ export default function CtaBanner() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-azure-600 rounded-xl font-semibold hover:bg-azure-50 transition-all duration-200 shadow-lg"
             >
-              Start Your Project
+              Book a Consultation
               <SimpleIcon name="arrow-right" size={16} className="ml-2" />
             </motion.button>
-            
-            <motion.button
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-azure-600 transition-all duration-200"
-            >
-              Schedule Consultation
-            </motion.button>
+
           </div>
         </motion.div>
       </div>

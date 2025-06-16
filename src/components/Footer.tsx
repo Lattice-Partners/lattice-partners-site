@@ -70,7 +70,6 @@ export default function Footer() {
                     <motion.a
                       key={social.name}
                       href={social.href}
-                      whileHover={{ y: -2 }}
                       className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center hover:bg-azure-600 hover:text-white transition-all duration-300"
                     >
                       <Icon className="w-5 h-5" strokeWidth={1.5} />
