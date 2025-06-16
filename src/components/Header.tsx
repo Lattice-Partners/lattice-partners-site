@@ -20,16 +20,16 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="#services" className="text-slate-600 hover:text-azure-600 transition-colors">
+            <Link href="#what-we-do" className="text-slate-600 hover:text-azure-600 transition-colors">
               Services
             </Link>
-            <Link href="#how-it-works" className="text-slate-600 hover:text-azure-600 transition-colors">
-              How It Works
+            <Link href="#how-we-help" className="text-slate-600 hover:text-azure-600 transition-colors">
+              Our Process
             </Link>
             <Link href="#testimonials" className="text-slate-600 hover:text-azure-600 transition-colors">
               Testimonials
             </Link>
-            <Link href="#case-studies" className="text-slate-600 hover:text-azure-600 transition-colors">
+            <Link href="#case-blog" className="text-slate-600 hover:text-azure-600 transition-colors">
               Case Studies
             </Link>
             <Link 
@@ -54,18 +54,18 @@ export default function Header() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 border-t border-slate-200">
               <Link
-                href="#services"
+                href="#what-we-do"
                 className="block px-3 py-2 text-slate-600 hover:text-azure-600 hover:bg-light-blue-bg rounded-lg transition-all duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Services
               </Link>
               <Link
-                href="#how-it-works"
+                href="#how-we-help"
                 className="block px-3 py-2 text-slate-600 hover:text-azure-600 hover:bg-light-blue-bg rounded-lg transition-all duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
-                How It Works
+                Our Process
               </Link>
               <Link
                 href="#testimonials"
@@ -75,7 +75,7 @@ export default function Header() {
                 Testimonials
               </Link>
               <Link
-                href="#case-studies"
+                href="#case-blog"
                 className="block px-3 py-2 text-slate-600 hover:text-azure-600 hover:bg-light-blue-bg rounded-lg transition-all duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >

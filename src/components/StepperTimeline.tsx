@@ -7,22 +7,22 @@ const steps = [
   {
     icon: Search,
     title: "Discovery",
-    description: "We dive deep into your business to understand your challenges, goals, and current processes."
+    description: "We interview you and your employees, diving deep into your challenges, goals, and current processes."
   },
   {
     icon: Lightbulb,
     title: "Strategy",
-    description: "We design a tailored AI roadmap that aligns with your business objectives and technical capabilities."
+    description: "We craft a tailored AI roadmap that aligns with your business objectives and employee capabilities."
   },
   {
     icon: Cog,
     title: "Implementation",
-    description: "We build and integrate AI solutions with your team, ensuring smooth adoption and maximum impact."
+    description: "We level up your team with AI skills, create custom workflows to automate your processes, and work with you to define your AI strategy and culture."
   },
   {
     icon: Rocket,
     title: "Launch & Scale",
-    description: "We deploy solutions, train your team, and provide ongoing support to ensure long-term success."
+    description: "We deploy long-term solutions, train your team to explore AI tools, and provide ongoing support to ensure long-term success."
   }
 ]
 
@@ -31,11 +31,10 @@ export default function StepperTimeline() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-          How We Help
+          Our Process
         </h2>
         <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-          Our proven process takes you from AI curiosity to confident implementation, 
-          with support every step of the way.
+          We take you from AI-curious to AI-driven, with support every step of the way.
         </p>
       </div>
 

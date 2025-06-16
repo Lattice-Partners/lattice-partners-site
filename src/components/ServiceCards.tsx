@@ -38,7 +38,7 @@ export default function ServiceCards() {
           What We Do
         </h2>
         <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-          We help businesses harness the power of AI through strategic consulting, 
+          We help businesses leverage the power of AI through strategic consulting, 
           hands-on training, and custom implementations.
         </p>
       </div>

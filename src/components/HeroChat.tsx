@@ -72,13 +72,13 @@ export default function HeroChat() {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 tracking-tight">
-            AI that works{' '}
+            An AI strategy that works{' '}
             <span className="bg-gradient-to-r from-azure-600 to-gradient-end bg-clip-text text-transparent">
               for you
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            From strategy to implementation, we help businesses harness AI to work smarter and faster
+            From strategy to implementation, we help businesses leverage AI to work smarter and faster
           </p>
         </motion.div>
 

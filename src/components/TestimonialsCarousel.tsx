@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 const testimonials = [
@@ -30,26 +30,20 @@ const testimonials = [
 export default function TestimonialsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
-
-    return () => clearInterval(timer)
-  }, [])
-
   return (
     <div className="text-center">
       <div className="relative h-64 flex items-center justify-center">
         {testimonials.map((testimonial, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 0 }}
             animate={{ 
               opacity: index === currentIndex ? 1 : 0,
-              y: index === currentIndex ? 0 : 20
             }}
-            transition={{ duration: 0.5 }}
+            transition={{ 
+              duration: 0.4,
+              delay: index === currentIndex ? 0.2 : 0
+            }}
             className={`absolute inset-0 flex flex-col items-center justify-center ${
               index === currentIndex ? 'pointer-events-auto' : 'pointer-events-none'
             }`}

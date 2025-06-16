@@ -42,7 +42,7 @@ export default function Footer() {
                 AI Consulting
               </h3>
               <p className="text-slate-600 mb-6 leading-relaxed max-w-md">
-                We help businesses harness the power of AI through strategic consulting, 
+                We help businesses leverage the power of AI through strategic consulting, 
                 hands-on training, and custom implementations.
               </p>
               
@@ -58,7 +58,7 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-azure-600" strokeWidth={1.5} />
-                  <span>San Francisco, CA</span>
+                  <span>Los Angeles, CA</span>
                 </div>
               </div>
 
