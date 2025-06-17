@@ -1,32 +1,26 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Brain, Users, Zap, Settings } from 'lucide-react'
+import { Brain, GraduationCap, Zap } from 'lucide-react'
 
 const services = [
   {
     icon: Brain,
-    title: "AI Strategy",
-    tagline: "Find the wins hiding in your workflow.",
+    title: "360° Strategy",
+    tagline: "Understand where AI fits into your business.",
     description: "We analyze your current processes and identify the most impactful AI opportunities for your business."
   },
   {
-    icon: Users,
+    icon: GraduationCap,
     title: "Team Training",
-    tagline: "Hands-on workshops that stick.",
-    description: "Practical training sessions that get your team confident and productive with AI tools."
+    tagline: "Turn your employees into AI experts.",
+    description: "We lead hands-on, personalized training sessions that get your team confident and productive with AI tools."
   },
   {
     icon: Zap,
-    title: "Rapid Prototyping",
-    tagline: "See it working before you blink.",
-    description: "Quick proof-of-concepts that demonstrate AI solutions tailored to your specific needs."
-  },
-  {
-    icon: Settings,
-    title: "Custom Integration",
-    tagline: "We make AI play nice with your stack.",
-    description: "Seamless integration of AI capabilities into your existing systems and workflows."
+    title: "Custom Solutions",
+    tagline: "Automations and software that save your team time.",
+    description: "We build solutions that automate frustrating, complex processes with AI."
   }
 ]
 
@@ -43,7 +37,7 @@ export default function ServiceCards() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service) => {
           const Icon = service.icon
           return (

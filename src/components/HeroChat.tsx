@@ -44,7 +44,7 @@ export default function HeroChat() {
   }, [])
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-32">
+    <div className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 ">
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-base-bg to-light-blue-bg opacity-60" />
       
@@ -78,7 +78,7 @@ export default function HeroChat() {
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            From strategy to implementation, we help businesses leverage AI to work smarter and faster
+            Leverage AI to save thousands of employee hours a year.
           </p>
         </motion.div>
 

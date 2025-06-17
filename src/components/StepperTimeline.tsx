@@ -7,22 +7,22 @@ const steps = [
   {
     icon: Search,
     title: "Discovery",
-    description: "We interview you and your employees, diving deep into your challenges, goals, and current processes."
+    description: "We interview you and your employees to understand your workflows, challenges, and goals."
   },
   {
     icon: Lightbulb,
     title: "Strategy",
-    description: "We craft a tailored AI roadmap that aligns with your business objectives and employee capabilities."
+    description: "We craft a tailored AI roadmap that aligns with your unique strengths and business objectives."
   },
   {
     icon: Cog,
     title: "Implementation",
-    description: "We level up your team with AI skills, create custom workflows to automate your processes, and work with you to define your AI strategy and culture."
+    description: "We supercharge your team with AI, create custom workflows to automate your processes, and work with you to define your AI strategy and culture."
   },
   {
     icon: Rocket,
     title: "Launch & Scale",
-    description: "We deploy long-term solutions, train your team to explore AI tools, and provide ongoing support to ensure long-term success."
+    description: "We collaborate on long-term solutions, help your team explore and purchase AI tools, and provide support as needed."
   }
 ]
 
@@ -34,7 +34,7 @@ export default function StepperTimeline() {
           Our Process
         </h2>
         <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-          We take you from AI-curious to AI-driven, with support every step of the way.
+          We take you from AI-curious to AI-driven in months.
         </p>
       </div>
 
