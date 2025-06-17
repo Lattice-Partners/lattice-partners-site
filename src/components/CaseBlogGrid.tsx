@@ -74,14 +74,14 @@ const fallbackContent: ContentItem[] = [
   }
 ]
 
-const filters = [
+/*const filters = [
   { id: 'all', label: 'All' },
   { id: 'case-studies', label: 'Case Studies' },
   { id: 'insights', label: 'Insights' }
-]
+] */
 
 export default function CaseBlogGrid({ ghostContent }: CaseBlogGridProps) {
-  const [activeFilter, setActiveFilter] = useState<ContentType>('all')
+  const [activeFilter] = useState<ContentType>('all')
 
   const allContent = ghostContent && ghostContent.length > 0 ? ghostContent : fallbackContent
 
@@ -102,7 +102,7 @@ export default function CaseBlogGrid({ ghostContent }: CaseBlogGridProps) {
           Real success stories and expert insights to guide your AI journey.
         </p>
 
-        {/* Filter tabs */}
+        {/* Filter tabs  // KEEP ALL SHOWN FOR NOW, NOT ENOUGHC ONTENT
         <div className="flex justify-center space-x-1 bg-white rounded-xl p-2 shadow-card inline-flex">
           {filters.map((filter) => (
             <button
@@ -118,6 +118,7 @@ export default function CaseBlogGrid({ ghostContent }: CaseBlogGridProps) {
             </button>
           ))}
         </div>
+        */}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -158,14 +159,15 @@ export default function CaseBlogGrid({ ghostContent }: CaseBlogGridProps) {
         ))}
       </div>
 
-      {/* Load more button */}
+      {/* Load more button 
       <div className="text-center mt-12">
         <motion.button
-          className="px-8 py-4 bg-white border-2 border-azure-600 text-azure-600 rounded-xl font-semibold hover:bg-azure-600 hover:text-white transition-all duration-200"
+          className="bg-white text-azure-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-slate-50 transition-colors border border-slate-200 shadow-sm"
         >
           Load More Articles
         </motion.button>
       </div>
+      */}
     </div>
   )
 } 

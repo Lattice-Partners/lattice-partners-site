@@ -1,6 +1,6 @@
 # AI Consulting Landing Page
 
-A modern, responsive landing page built with Next.js 15, featuring a bright design theme, smooth animations, and AI-focused content.
+A modern, responsive landing page built with Next.js, featuring a bright design theme, smooth animations, and AI-focused content. The platform includes a comprehensive course system for AI education and consulting services.
 
 ## 🎨 Design System
 
@@ -16,6 +16,26 @@ A modern, responsive landing page built with Next.js 15, featuring a bright desi
 - **Text**: `#0F172A` (Slate 900) for body, `#1E293B` (Slate 800) for headings
 - **Card Surface**: Pure white with 12px radius and soft shadows
 
+## 🎯 Marketing Voice & Tone
+
+### Brand Voice
+- **Professional yet Approachable**: We speak with authority while maintaining warmth and accessibility
+- **Forward-thinking**: Emphasize innovation and cutting-edge solutions
+- **Educational**: Focus on knowledge sharing and empowerment
+- **Solution-oriented**: Address real business challenges with practical AI solutions
+
+### Content Strategy
+- **Clear Value Proposition**: Immediate focus on business outcomes and ROI
+- **Educational Content**: Mix of theoretical knowledge and practical applications
+- **Success Stories**: Real-world examples and case studies
+- **Technical Depth**: Balance between high-level concepts and technical details
+
+### Messaging Pillars
+1. **Empowerment**: "AI for everyone" - democratizing AI knowledge
+2. **Practical Application**: "From theory to practice" - actionable insights
+3. **Business Impact**: "Transform your workflow" - focus on outcomes
+4. **Future-Ready**: "Stay ahead of the curve" - forward-looking perspective
+
 ## 🚀 Features
 
 ### Interactive Components
@@ -26,6 +46,12 @@ A modern, responsive landing page built with Next.js 15, featuring a bright desi
 - **Case Studies Grid**: Filterable content with KPI displays
 - **CTA Banner**: Azure background with compelling call-to-action
 
+### Course Platform Features
+- **Interactive Learning**: Hands-on exercises and real-world projects
+- **Progress Tracking**: User-friendly dashboard for course completion
+- **Resource Library**: Comprehensive learning materials and documentation
+- **Community Features**: Discussion forums and peer learning opportunities
+
 ### Motion System
 - **Typewriter Effect**: 2.3s per line with blinking cursor
 - **Parallax Blobs**: Floating gradient shapes behind hero
@@ -34,12 +60,15 @@ A modern, responsive landing page built with Next.js 15, featuring a bright desi
 
 ## 🛠 Tech Stack
 
-- **Framework**: Next.js 15 with App Router
-- **Styling**: Tailwind CSS 4 with custom design tokens
+- **Framework**: Next.js with App Router
+- **Styling**: Tailwind CSS with custom design tokens
 - **Animations**: Framer Motion
 - **Typography**: React Simple Typewriter
 - **Icons**: Lucide React
 - **Language**: TypeScript
+- **Database**: Prisma with PostgreSQL
+- **Authentication**: NextAuth.js
+- **Content Management**: MDX for course content
 
 ## 📁 Project Structure
 
@@ -48,7 +77,8 @@ src/
 ├── app/
 │   ├── globals.css          # Global styles with custom utilities
 │   ├── layout.tsx           # Root layout
-│   └── page.tsx             # Main landing page
+│   ├── page.tsx             # Main landing page
+│   └── course/             # Course platform routes
 ├── components/
 │   ├── HeroChat.tsx         # Hero section with chat interface
 │   ├── ServiceCards.tsx     # Service offerings grid
@@ -58,26 +88,13 @@ src/
 │   ├── CtaBanner.tsx        # Call-to-action section
 │   └── Footer.tsx           # Site footer
 ├── content/
-│   └── hero.json            # Hero content for easy editing
+│   ├── courses/            # Course content in MDX
+│   └── hero.json           # Hero content for easy editing
 ├── lib/
-│   └── utils.ts             # Utility functions
-└── tailwind.config.ts       # Custom design tokens
+│   ├── utils.ts            # Utility functions
+│   └── prisma.ts           # Database client
+└── tailwind.config.ts      # Custom design tokens
 ```
-
-## 🎯 Content Strategy
-
-### Hero Rotating Questions
-1. "Want AI to do your busy-work?"
-2. "Need a prototype by next week?"
-3. "Curious how LLMs fit your data?"
-4. "Looking to upskill the whole team?"
-5. "Just exploring—show me what's possible."
-
-### Service Taglines
-- **AI Strategy**: "Find the wins hiding in your workflow."
-- **Team Training**: "Hands-on workshops that stick."
-- **Rapid Prototyping**: "See it working before you blink."
-- **Custom Integration**: "We make AI play nice with your stack."
 
 ## 🚦 Getting Started
 
@@ -86,12 +103,17 @@ src/
    npm install
    ```
 
-2. **Start development server**:
+2. **Set up environment variables**:
+   ```bash
+   cp .env.example .env.local
+   ```
+
+3. **Start development server**:
    ```bash
    npm run dev
    ```
 
-3. **Open in browser**:
+4. **Open in browser**:
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 📱 Responsive Design
@@ -110,11 +132,11 @@ src/
 
 ## 🔮 Future Enhancements
 
-- **Ghost CMS Integration**: Dynamic blog and case studies
-- **Contact Form**: Interactive form with validation
-- **Analytics**: User behavior tracking
-- **A/B Testing**: Multiple hero variants
-- **SEO**: Meta tags and structured data
+- **Advanced Analytics**: Detailed course progress tracking
+- **Interactive Exercises**: Real-time coding challenges
+- **Certificate System**: Automated course completion certificates
+- **Integration Hub**: Connect with popular development tools
+- **Community Features**: Enhanced discussion and collaboration tools
 
 ## 📄 License
 
