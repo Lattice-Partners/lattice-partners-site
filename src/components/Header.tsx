@@ -13,7 +13,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold text-slate-900">
+            <span className="text-2xl font-semibold text-slate-900">
               Lattice Partners
             </span>
           </Link>
@@ -29,6 +29,9 @@ export default function Header() {
             <Link href="#testimonials" className="text-slate-600 hover:text-azure-600 transition-colors">
               Testimonials
             </Link>
+            <Link href="#about" className="text-slate-600 hover:text-azure-600 transition-colors">
+              About Us
+            </Link>
             <Link href="#case-blog" className="text-slate-600 hover:text-azure-600 transition-colors">
               Case Studies
             </Link>
@@ -36,7 +39,7 @@ export default function Header() {
               href="#contact" 
               className="bg-azure-600 text-white px-6 py-2 rounded-lg hover:bg-azure-700 transition-all duration-200"
             >
-              Get Started
+              Book a Consultation
             </Link>
           </nav>
 
@@ -73,6 +76,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Testimonials
+              </Link>
+              <Link
+                href="#about"
+                className="block px-3 py-2 text-slate-600 hover:text-azure-600 hover:bg-light-blue-bg rounded-lg transition-all duration-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About Us
               </Link>
               <Link
                 href="#case-blog"

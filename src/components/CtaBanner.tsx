@@ -15,7 +15,7 @@ export default function CtaBanner() {
             <SimpleIcon name="sparkles" size={32} className="text-azure-600" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-azure-600 mb-6">
-            Ready to Go AI-Firstso?
+            Ready to Go AI-First?
           </h2>
           <p className="text-xl md:text-2xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
             Join hundreds of companies who have transformed their operations with AI.

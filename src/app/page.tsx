@@ -6,6 +6,7 @@ import TestimonialsCarousel from '@/components/TestimonialsCarousel'
 import CaseBlogGridServer from '@/components/CaseBlogGridServer'
 import CtaBanner from '@/components/CtaBanner'
 import Footer from '@/components/Footer'
+import AboutUs from '@/components/AboutUs'
 
 export default function Home() {
   return (
@@ -23,18 +24,23 @@ export default function Home() {
         <ServiceCards />
       </section>
 
-      {/* How We Help Section */}
-      <section id="how-we-help" className="py-20 bg-gradient-to-b from-white to-light-blue-bg scroll-mt-16">
-        <StepperTimeline />
-      </section>
-
       {/* Testimonials Section */}
       <section id="testimonials" className="py-20 bg-white scroll-mt-16">
         <TestimonialsCarousel />
       </section>
 
+      {/* About Us Section */}
+      <section id="about" className="py-20 bg-white scroll-mt-16">
+        <AboutUs />
+      </section>
+
+      {/* How We Help Section */}
+      <section id="how-we-help" className="py-20 bg-gradient-to-b from-white to-light-blue-bg scroll-mt-16">
+        <StepperTimeline />
+      </section>
+
       {/* Case Studies & Blog Section */}
-      <section id="case-blog" className="py-20 bg-lighter-blue-bg scroll-mt-16">
+      <section id="case-blog" className="py-20 border-b border-blue-100 scroll-mt-16">
         <CaseBlogGridServer />
       </section>
 

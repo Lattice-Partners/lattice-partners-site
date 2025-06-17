@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react'
+import { Mail, MapPin, Linkedin, Twitter, Github } from 'lucide-react'
 
 const footerLinks = {
   services: [
@@ -52,10 +52,10 @@ export default function Footer() {
                   <Mail className="w-5 h-5 text-azure-600" strokeWidth={1.5} />
                   <span>hello@latticepartners.ai</span>
                 </div>
-                <div className="flex items-center space-x-3">
+                {/* NO PHONE <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-azure-600" strokeWidth={1.5} />
                   <span>+1 (555) 123-4567</span>
-                </div>
+                </div>*/}
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-azure-600" strokeWidth={1.5} />
                   <span>Los Angeles, CA</span>
@@ -136,8 +136,9 @@ export default function Footer() {
         <div className="mt-16 pt-8 border-t border-slate-200">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-slate-500">
-              © 2024 AI Consulting. All rights reserved.
+              © 2025 Lattice Partners. All rights reserved.
             </p>
+            {/* NO
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-slate-500 hover:text-azure-600 transition-colors duration-300">
                 Privacy Policy
@@ -149,6 +150,7 @@ export default function Footer() {
                 Cookie Policy
               </a>
             </div>
+            */}
           </div>
         </div>
       </div>
