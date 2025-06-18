@@ -27,18 +27,47 @@ const conversations = [
 export default function HeroChat() {
   const [currentConversationIndex, setCurrentConversationIndex] = useState(0)
   const [showAnswer, setShowAnswer] = useState(false)
+  const [showQuestion, setShowQuestion] = useState(false)
+  const [showTyping, setShowTyping] = useState(false)
 
   useEffect(() => {
+    // Show first question immediately
+    setShowQuestion(true)
+    
+    // Show typing indicator after question appears
+    setTimeout(() => setShowTyping(true), 1000)
+    
+    // Show first answer after typing indicator
+    setTimeout(() => {
+      setShowTyping(false)
+      setShowAnswer(true)
+    }, 2500)
+
     const timer = setInterval(() => {
+      // Fade out both question and answer simultaneously
       setShowAnswer(false)
+      setShowQuestion(false)
+      setShowTyping(false)
+      
+      // Longer pause before new conversation starts
       setTimeout(() => {
         setCurrentConversationIndex((prev) => (prev + 1) % conversations.length)
-        setShowAnswer(true)
-      }, 500)
+        
+        // Slight delay before showing new question for smoother feel
+        setTimeout(() => {
+          setShowQuestion(true)
+          
+          // Show typing indicator after question
+          setTimeout(() => setShowTyping(true), 1000)
+          
+          // Show answer after typing
+          setTimeout(() => {
+            setShowTyping(false)
+            setShowAnswer(true)
+          }, 2500)
+        }, 100)
+      }, 800)
     }, 8000)
-
-    // Show first answer
-    setTimeout(() => setShowAnswer(true), 2000)
 
     return () => clearInterval(timer)
   }, [])
@@ -64,7 +93,7 @@ export default function HeroChat() {
 
       {/* Main content - Two column layout */}
       <div className="relative w-full max-w-7xl z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
           
           {/* Left column - Text content */}
           <motion.div
@@ -92,9 +121,9 @@ export default function HeroChat() {
             >
               <div className="flex justify-center lg:justify-start">
                 <motion.button
-                  className="bg-white text-azure-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-slate-50 transition-colors border border-slate-200 shadow-lg"
+                  className="bg-white text-azure-600 px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-slate-50 transition-colors border border-slate-200 shadow-lg"
                 >
-                  Book a Consultation
+                  Start your AI journey
                 </motion.button>
               </div>
               <p className="text-slate-500 text-sm">
@@ -110,50 +139,64 @@ export default function HeroChat() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex justify-center lg:justify-end lg:col-span-3"
           >
-            <div className="bg-white rounded-2xl shadow-lg border border-slate-200/50 overflow-hidden max-w-lg w-full">
+            <div className="bg-white rounded-2xl shadow-lg border border-slate-200/50 overflow-hidden max-w-xl w-full">
               {/* Chat header */}
               <div className="bg-slate-50 px-6 py-3 border-b border-slate-200/50">
                 <div className="flex items-center space-x-3">
                   <div className="w-2 h-2 rounded-full bg-red-400"></div>
                   <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
                   <div className="w-2 h-2 rounded-full bg-green-400"></div>
-                  <div className="flex-1 text-center">
-                    <div className="text-sm font-medium text-slate-600 flex items-center justify-center space-x-2">
+                  <div className="flex-1 text-right">
+                    <div className="text-sm font-medium text-slate-600 flex items-center justify-end space-x-2">
+                      <span>Lattice Partners</span>
                       <Sparkles className="w-4 h-4" />
-                      <span>AI Assistant</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Chat messages */}
-              <div className="p-6 space-y-4 min-h-[300px] flex flex-col justify-center">
+              <div className="p-6 space-y-4 min-h-[300px] flex flex-col justify-start">
                 {/* User message */}
-                <div className="flex justify-end">
+                <motion.div
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ 
+                    opacity: showQuestion ? 1 : 0, 
+                    x: showQuestion ? 0 : 10,
+                    scale: showQuestion ? 1 : 0.95
+                  }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="flex justify-end"
+                >
                   <div className="bg-azure-600 text-white rounded-2xl rounded-tr-md px-4 py-3 max-w-xs">
                     <p className="text-sm font-medium">
                       {conversations[currentConversationIndex].question}
                     </p>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* AI response */}
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: showAnswer ? 1 : 0 }}
-                  transition={{ duration: 0.4 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ 
+                    opacity: showAnswer ? 1 : 0, 
+                    y: showAnswer ? 0 : 10,
+                    scale: showAnswer ? 1 : 0.95
+                  }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                   className="flex justify-start"
                 >
                   <div className="bg-slate-100 text-slate-800 rounded-2xl rounded-tl-md px-4 py-3 max-w-xs">
                     {showAnswer && (
-                      <p className="text-sm">
+                      <p className="text-sm leading-relaxed">
                         <Typewriter
                           words={[conversations[currentConversationIndex].answer]}
                           cursor
-                          cursorStyle='|'
-                          typeSpeed={25}
+                          cursorStyle='_'
+                          typeSpeed={20}
                           deleteSpeed={0}
-                          delaySpeed={0}
+                          delaySpeed={300}
+                          cursorBlinking={true}
                         />
                       </p>
                     )}
@@ -161,16 +204,33 @@ export default function HeroChat() {
                 </motion.div>
 
                 {/* Typing indicator */}
-                {!showAnswer && (
-                  <div className="flex justify-start">
+                {showTyping && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: showTyping ? 1 : 0, y: showTyping ? 0 : 10 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="flex justify-start"
+                  >
                     <div className="bg-slate-100 text-slate-600 rounded-2xl rounded-tl-md px-4 py-3">
                       <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                        <motion.div 
+                          className="w-2 h-2 bg-slate-400 rounded-full"
+                          animate={{ y: [0, -4, 0] }}
+                          transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut" }}
+                        />
+                        <motion.div 
+                          className="w-2 h-2 bg-slate-400 rounded-full"
+                          animate={{ y: [0, -4, 0] }}
+                          transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut", delay: 0.1 }}
+                        />
+                        <motion.div 
+                          className="w-2 h-2 bg-slate-400 rounded-full"
+                          animate={{ y: [0, -4, 0] }}
+                          transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                        />
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 )}
               </div>
 

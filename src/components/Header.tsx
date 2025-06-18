@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import SimpleIcon from './SimpleIcon'
 
 export default function Header() {
@@ -12,7 +13,14 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center space-x-3">
+            <Image
+              src="/logos/lattice-partners-logo.png"
+              alt="Lattice Partners Logo"
+              width={32}
+              height={32}
+              className="w-8 h-8"
+            />
             <span className="text-2xl font-semibold text-slate-900">
               Lattice Partners
             </span>
