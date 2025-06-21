@@ -20,12 +20,12 @@ export default function Home() {
       </section>
 
       {/* What We Do Section */}
-      <section id="what-we-do" className="py-20 bg-white scroll-mt-16">
+      <section id="what-we-do" className="pt-20 pb-12 bg-white scroll-mt-16">
         <ServiceCards />
       </section>
 
       {/* About Us Section */}
-      <section id="about" className="pt-12 pb-8 bg-white scroll-mt-16">
+      <section id="about" className="pt-8 pb-8 bg-white scroll-mt-16">
         <AboutUs />
       </section>
 

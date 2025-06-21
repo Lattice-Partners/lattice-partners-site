@@ -73,7 +73,7 @@ export default function HeroChat() {
   }, [])
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
+    <div className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-28">
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-base-bg to-light-blue-bg opacity-60" />
       
@@ -134,7 +134,7 @@ export default function HeroChat() {
           </div>
 
           {/* Chat messages */}
-          <div className="p-6 space-y-4 min-h-[300px] flex flex-col justify-start">
+          <div className="p-6 space-y-4 h-[240px] flex flex-col justify-start">
             {/* User message */}
             <motion.div
               initial={{ opacity: 0, x: 10 }}
@@ -212,7 +212,7 @@ export default function HeroChat() {
             )}
           </div>
 
-          {/* Input area */}
+          {/* Input area with CTA button */}
           <div className="border-t border-slate-200/50 p-4">
             <div className="flex items-center space-x-3">
               <input
@@ -221,30 +221,30 @@ export default function HeroChat() {
                 className="flex-1 border border-slate-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-azure-600 focus:border-transparent"
                 disabled
               />
-              <button className="bg-azure-600 text-white rounded-full p-2 hover:bg-azure-700 transition-colors">
+              <motion.button
+                className="bg-green-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-green-700 transition-colors shadow-lg flex items-center space-x-2 whitespace-nowrap"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                animate={{ 
+                  boxShadow: [
+                    "0 0 0 0 rgba(34, 197, 94, 0.4)",
+                    "0 0 0 8px rgba(34, 197, 94, 0)",
+                    "0 0 0 0 rgba(34, 197, 94, 0)"
+                  ]
+                }}
+                transition={{
+                  boxShadow: {
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }
+                }}
+              >
+                <span className="text-sm">Start your AI Journey</span>
                 <Send className="w-4 h-4" />
-              </button>
+              </motion.button>
             </div>
           </div>
-        </motion.div>
-
-        {/* CTA section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-center"
-        >
-          <div className="flex justify-center">
-            <motion.button
-              className="bg-white text-azure-600 px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-slate-50 transition-colors border border-slate-200 shadow-lg"
-            >
-              Start your AI journey
-            </motion.button>
-          </div>
-          <p className="text-slate-500 text-sm mt-6">
-            No commitment required • Free initial consultation
-          </p>
         </motion.div>
       </div>
     </div>
