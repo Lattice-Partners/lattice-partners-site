@@ -5,38 +5,43 @@ import Image from 'next/image'
 
 export default function AboutUs() {
   const companies = [
-    { name: 'EY', logo: '/logos/ey.svg', width: 80, height: 40 },
-    { name: 'Google', logo: '/logos/google.svg', width: 120, height: 60 },
-    { name: 'Red Bull', logo: '/logos/redbull.svg', width: 120, height: 60 },
-    { name: 'Dapper Labs', logo: '/logos/dapper.svg', width: 180, height: 80 },
+    { name: 'EY', logo: '/logos/ey.svg', width: 60, height: 30 },
+    { name: 'Google', logo: '/logos/google.svg', width: 110, height: 55 },
+    { name: 'Red Bull', logo: '/logos/redbull.svg', width: 90, height: 45 },
+    { name: 'Dapper Labs', logo: '/logos/dapper.svg', width: 135, height: 60 },
   ]
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-          About us
-        </h2>
-        <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-          {`We're AI-loving engineers, product managers, and consultants who've worked at industry-leading companies.`}
-        </p>
+      {/* Dotted line with text */}
+      <div className="relative flex items-center justify-center mb-8">
+        <div className="flex-1 border-t border-dotted border-slate-300"></div>
+        <div className="px-6">
+          <p className="text-slate-600 text-center max-w-2xl">
+            Built by AI-loving engineers, product managers, and consultants who've worked at industry-leading companies.
+          </p>
+        </div>
+        <div className="flex-1 border-t border-dotted border-slate-300"></div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 max-w-4xl mx-auto">
-        {companies.map((company) => (
-          <motion.div
-            key={company.name}
-            className="bg-white p-6 flex items-center justify-center"
-          >
-            <Image
-              src={company.logo}
-              alt={`${company.name} logo`}
-              width={company.width}
-              height={company.height}
-              className="object-contain"
-            />
-          </motion.div>
-        ))}
+      {/* Company logos */}
+      <div className="flex justify-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-items-center max-w-4xl">
+          {companies.map((company) => (
+            <motion.div
+              key={company.name}
+              className="p-4 flex items-center justify-center"
+            >
+              <Image
+                src={company.logo}
+                alt={`${company.name} logo`}
+                width={company.width}
+                height={company.height}
+                className="object-contain"
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   )

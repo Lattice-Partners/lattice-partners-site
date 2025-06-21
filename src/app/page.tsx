@@ -24,19 +24,19 @@ export default function Home() {
         <ServiceCards />
       </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-white scroll-mt-16">
-        <TestimonialsCarousel />
-      </section>
-
       {/* About Us Section */}
-      <section id="about" className="py-20 bg-white scroll-mt-16">
+      <section id="about" className="pt-12 pb-8 bg-white scroll-mt-16">
         <AboutUs />
       </section>
 
       {/* How We Help Section */}
-      <section id="how-we-help" className="py-20 bg-gradient-to-b from-white to-light-blue-bg scroll-mt-16">
+      <section id="how-we-help" className="pt-12 pb-20 bg-gradient-to-b from-white to-light-blue-bg scroll-mt-16">
         <StepperTimeline />
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-20 bg-white scroll-mt-16">
+        <TestimonialsCarousel />
       </section>
 
       {/* Case Studies & Blog Section */}

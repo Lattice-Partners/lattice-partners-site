@@ -346,13 +346,14 @@ const ImplementationAnimation = () => {
                           {String(lineIdx + 1).padStart(2, ' ')}
                         </span>
                         <span 
+                          suppressHydrationWarning={true}
                           dangerouslySetInnerHTML={{
                             __html: line
                               .replace(/(\bimport\b|\bfrom\b|\bclass\b|\bdef\b|\bconst\b|\basync\b|\bawait\b)/g, '<span class="text-purple-600 font-medium">$1</span>')
                               .replace(/(\bif\b|\belse\b|\btry\b|\bexcept\b|\breturn\b)/g, '<span class="text-blue-600 font-medium">$1</span>')
                               .replace(/([\'\"`].*?[\'\"`])/g, '<span class="text-green-600">$1</span>')
                               .replace(/(#.*$)/g, '<span class="text-slate-500 italic">$1</span>')
-                        }}
+                          }}
                         />
                       </div>
                     ))}
@@ -380,13 +381,14 @@ const ImplementationAnimation = () => {
                           {String(lineIdx + 1).padStart(2, ' ')}
                         </span>
                         <span 
+                          suppressHydrationWarning={true}
                           dangerouslySetInnerHTML={{
                             __html: line
                               .replace(/(\bimport\b|\bfrom\b|\bclass\b|\bdef\b|\bconst\b|\basync\b|\bawait\b)/g, '<span class="text-purple-600 font-medium">$1</span>')
                               .replace(/(\bif\b|\belse\b|\btry\b|\bexcept\b|\breturn\b)/g, '<span class="text-blue-600 font-medium">$1</span>')
                               .replace(/([\'\"`].*?[\'\"`])/g, '<span class="text-green-600">$1</span>')
                               .replace(/(#.*$)/g, '<span class="text-slate-500 italic">$1</span>')
-                        }}
+                          }}
                         />
                       </div>
                     ))}
@@ -488,7 +490,7 @@ export default function StepperTimeline() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white rounded-xl p-6 border border-slate-200 hover:shadow-lg transition-all duration-300 group"
-            >
+              >
               {/* Step indicator */}
               <div className="inline-block text-xs text-azure-700 font-medium mb-4 px-3 py-1 bg-azure-50 rounded border border-azure-200">{step.step}</div>
               
