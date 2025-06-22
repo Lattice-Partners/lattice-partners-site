@@ -34,14 +34,14 @@ export default function Home() {
         <StepperTimeline />
       </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-white scroll-mt-16">
-        <TestimonialsCarousel />
-      </section>
-
       {/* Case Studies & Blog Section */}
       <section id="case-blog" className="py-20 border-b border-blue-100 scroll-mt-16">
         <CaseBlogGridServer />
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-20 bg-white scroll-mt-16">
+        <TestimonialsCarousel />
       </section>
 
       {/* CTA Banner */}
