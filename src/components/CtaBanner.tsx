@@ -62,7 +62,7 @@ export default function CtaBanner() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Animated Text */}
         <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-8" suppressHydrationWarning={true}>
             {words.map((word, index) => (
               <span
                 key={index}

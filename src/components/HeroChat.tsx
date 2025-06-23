@@ -166,7 +166,7 @@ export default function HeroChat() {
             >
               <div className="bg-slate-100 text-slate-800 rounded-2xl rounded-tl-md px-4 py-3 max-w-xs">
                 {showAnswer && (
-                  <p className="text-sm leading-relaxed">
+                  <p className="text-sm leading-relaxed" suppressHydrationWarning={true}>
                     <Typewriter
                       words={[conversations[currentConversationIndex].answer]}
                       cursor
