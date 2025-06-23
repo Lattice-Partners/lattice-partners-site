@@ -16,7 +16,7 @@ const testimonials = [
     name: "Michael Rodriguez",
     role: "Head of Operations",
     company: "Global Manufacturing Corp",
-    content: "The predictive maintenance solution they developed has been game-changing. We've prevented millions in potential downtime and our equipment runs smoother than ever.",
+    content: "The predictive maintenance solution they developed has been game-changing. We&apos;ve prevented millions in potential downtime and our equipment runs smoother than ever.",
     initials: "MR",
     color: "from-emerald-600 to-emerald-700"
   },
@@ -40,7 +40,7 @@ const testimonials = [
     name: "Lisa Park",
     role: "Chief Data Officer",
     company: "HealthTech Dynamics",
-    content: "The AI automation platform they built streamlined our patient data analysis. We're now able to provide insights that directly improve patient outcomes.",
+    content: "The AI automation platform they built streamlined our patient data analysis. We&apos;re now able to provide insights that directly improve patient outcomes.",
     initials: "LP",
     color: "from-pink-600 to-pink-700"
   },
@@ -69,7 +69,7 @@ export default function TestimonialsCarousel() {
     return () => clearInterval(interval)
   }, [isDragging])
 
-  const handleDragEnd = (event: any, info: any) => {
+  const handleDragEnd = (event: MouseEvent, info: { offset: { x: number } }) => {
     const threshold = 50 // Minimum drag distance
     
     if (Math.abs(info.offset.x) > threshold) {
@@ -92,7 +92,7 @@ export default function TestimonialsCarousel() {
           What Our Clients Say
         </h2>
         <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-          Don't just take our word for it. Hear from the leaders who've transformed their businesses with AI.
+          Don&apos;t just take our word for it. Hear from the leaders who&apos;ve transformed their businesses with AI.
         </p>
       </div>
 
@@ -100,14 +100,6 @@ export default function TestimonialsCarousel() {
       <div className="md:hidden">
         <div className="relative h-80 overflow-hidden mb-8">
           {testimonials.map((testimonial, index) => {
-            let position = 'translate-x-full opacity-0' // Default: off-screen right
-            
-            if (index === currentIndex) {
-              position = 'translate-x-0 opacity-100' // Current: center
-            } else if (index === (currentIndex - 1 + testimonials.length) % testimonials.length) {
-              position = '-translate-x-full opacity-0' // Previous: off-screen left
-            }
-            
             return (
               <motion.div
                 key={index}

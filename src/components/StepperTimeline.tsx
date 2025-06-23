@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Search, Lightbulb, Cog, Rocket, CheckCircle, ArrowRight, BarChart3, Settings, Shield, Zap, Clock, RefreshCw, TrendingUp, Users, Target, Activity } from 'lucide-react'
+import { Search, Lightbulb, Cog, Rocket, CheckCircle, ArrowRight, TrendingUp, Users, Activity } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const steps = [

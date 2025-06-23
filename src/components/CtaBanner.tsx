@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-import { Send } from 'lucide-react'
 
 const floatingTags = [
   // Left side tags

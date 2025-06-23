@@ -18,7 +18,7 @@ export default function AboutUs() {
         <div className="flex-1 border-t border-dotted border-slate-300"></div>
         <div className="px-6">
           <p className="text-slate-600 text-center max-w-2xl">
-            Built by AI-loving engineers, product managers, and consultants who've worked at industry-leading companies.
+            Built by AI-loving engineers, product managers, and consultants who&apos;ve worked at industry-leading companies.
           </p>
         </div>
         <div className="flex-1 border-t border-dotted border-slate-300"></div>
