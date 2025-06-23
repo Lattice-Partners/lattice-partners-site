@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Search, Lightbulb, Cog, Rocket, CheckCircle, ArrowRight, BarChart3, Settings, Shield, Zap, Clock, RefreshCw, TrendingUp, Users, Target, Activity } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 const steps = [
   {
@@ -302,6 +303,24 @@ const StrategyAnimation = () => {
 }
 
 const ImplementationAnimation = () => {
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  const highlightCode = (line: string) => {
+    if (!isClient) {
+      return line // Return plain text on server
+    }
+    
+    return line
+      .replace(/(\bimport\b|\bfrom\b|\bclass\b|\bdef\b|\bconst\b|\basync\b|\bawait\b)/g, '<span class="text-purple-600 font-medium">$1</span>')
+      .replace(/(\bif\b|\belse\b|\btry\b|\bexcept\b|\breturn\b)/g, '<span class="text-blue-600 font-medium">$1</span>')
+      .replace(/([\'\"`].*?[\'\"`])/g, '<span class="text-green-600">$1</span>')
+      .replace(/(#.*$)/g, '<span class="text-slate-500 italic">$1</span>')
+  }
+
   return (
     <div className="flex justify-center">
       {/* Code Editor Window - Wider */}
@@ -345,16 +364,15 @@ const ImplementationAnimation = () => {
                         <span className="text-slate-400 select-none mr-3 text-xs">
                           {String(lineIdx + 1).padStart(2, ' ')}
                         </span>
-                        <span 
-                          suppressHydrationWarning={true}
-                          dangerouslySetInnerHTML={{
-                            __html: line
-                              .replace(/(\bimport\b|\bfrom\b|\bclass\b|\bdef\b|\bconst\b|\basync\b|\bawait\b)/g, '<span class="text-purple-600 font-medium">$1</span>')
-                              .replace(/(\bif\b|\belse\b|\btry\b|\bexcept\b|\breturn\b)/g, '<span class="text-blue-600 font-medium">$1</span>')
-                              .replace(/([\'\"`].*?[\'\"`])/g, '<span class="text-green-600">$1</span>')
-                              .replace(/(#.*$)/g, '<span class="text-slate-500 italic">$1</span>')
-                          }}
-                        />
+                        {isClient ? (
+                          <span 
+                            dangerouslySetInnerHTML={{
+                              __html: highlightCode(line)
+                            }}
+                          />
+                        ) : (
+                          <span>{line}</span>
+                        )}
                       </div>
                     ))}
                   </code>
@@ -380,16 +398,15 @@ const ImplementationAnimation = () => {
                         <span className="text-slate-400 select-none mr-3 text-xs">
                           {String(lineIdx + 1).padStart(2, ' ')}
                         </span>
-                        <span 
-                          suppressHydrationWarning={true}
-                          dangerouslySetInnerHTML={{
-                            __html: line
-                              .replace(/(\bimport\b|\bfrom\b|\bclass\b|\bdef\b|\bconst\b|\basync\b|\bawait\b)/g, '<span class="text-purple-600 font-medium">$1</span>')
-                              .replace(/(\bif\b|\belse\b|\btry\b|\bexcept\b|\breturn\b)/g, '<span class="text-blue-600 font-medium">$1</span>')
-                              .replace(/([\'\"`].*?[\'\"`])/g, '<span class="text-green-600">$1</span>')
-                              .replace(/(#.*$)/g, '<span class="text-slate-500 italic">$1</span>')
-                          }}
-                        />
+                        {isClient ? (
+                          <span 
+                            dangerouslySetInnerHTML={{
+                              __html: highlightCode(line)
+                            }}
+                          />
+                        ) : (
+                          <span>{line}</span>
+                        )}
                       </div>
                     ))}
                   </code>
