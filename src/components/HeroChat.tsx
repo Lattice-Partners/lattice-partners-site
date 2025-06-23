@@ -11,16 +11,16 @@ const conversations = [
     answer: "Lattice Partners offers hands-on workshops that get your team confident and productive with AI tools in just weeks, not months."
   },
   {
-    question: "Can you build me an AI prototype quickly?",
-    answer: "We specialize in rapid prototyping—most of our proof-of-concept demos are running within 2 weeks of our first meeting."
+    question: "What if I don't even know where to start with AI?",
+    answer: "No problem — we start with discovery. We meet your team, map your workflows, and surface high-impact opportunities where AI can save time, reduce errors, or unlock new capabilities."
   },
   {
-    question: "How do I know if AI will actually help my business?",
-    answer: "We start with a deep discovery process to find the highest-impact AI opportunities hiding in your current workflow."
+    question: "Do you build custom AI tools too?",
+    answer: "Yes — once we understand your business, we build simple, no-fluff AI tools tailored to your exact needs. Think internal copilots, document analyzers, or dashboards that actually work."
   },
   {
-    question: "Will AI integration break my existing systems?",
-    answer: "Our custom integration approach ensures AI plays nice with your current tech stack—no rip-and-replace required."
+    question: "We've already started using AI. Can you help us go further?",
+    answer: "Definitely. We help teams go from early experimentation to real transformation — smarter systems, better decisions, and AI that sticks."
   }
 ]
 
@@ -67,7 +67,7 @@ export default function HeroChat() {
           }, 2500)
         }, 100)
       }, 800)
-    }, 8000)
+    }, 18000)
 
     return () => clearInterval(timer)
   }, [])
@@ -170,7 +170,7 @@ export default function HeroChat() {
                     <Typewriter
                       words={[conversations[currentConversationIndex].answer]}
                       cursor
-                      cursorStyle='_'
+                      cursorStyle='|'
                       typeSpeed={20}
                       deleteSpeed={0}
                       delaySpeed={300}

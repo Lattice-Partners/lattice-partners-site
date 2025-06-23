@@ -95,12 +95,11 @@ export default function CtaBanner() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <motion.button
-            className="bg-azure-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:bg-azure-700 transition-all duration-300 flex items-center space-x-2 mx-auto"
+            className="bg-azure-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:bg-azure-700 transition-all duration-300 mx-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <span>Book a Consultation</span>
-            <Send className="w-4 h-4" />
           </motion.button>
         </motion.div>
       </div>

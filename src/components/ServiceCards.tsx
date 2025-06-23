@@ -43,20 +43,25 @@ export default function ServiceCards() {
           return (
             <motion.div
               key={service.title}
-              className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100"
+              className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:border-azure-200 transition-all duration-300 cursor-pointer group"
+              whileHover={{ 
+                scale: 1.02,
+                y: -4
+              }}
+              transition={{ duration: 0.2 }}
             >
               <div className="mb-6">
-                <div className="w-12 h-12 bg-azure-600 rounded-xl flex items-center justify-center mb-6">
+                <div className="w-12 h-12 bg-azure-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-azure-700 group-hover:scale-110 transition-all duration-300">
                   <Icon className="w-6 h-6 text-white" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-azure-600 transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-azure-600 font-semibold text-sm mb-4">
+                <p className="text-azure-600 font-semibold text-sm mb-4 group-hover:text-azure-700 transition-colors duration-300">
                   {service.tagline}
                 </p>
               </div>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors duration-300">
                 {service.description}
               </p>
             </motion.div>
