@@ -123,9 +123,9 @@ export default function TestimonialsCarousel() {
                   pointerEvents: index === currentIndex ? 'auto' : 'none'
                 }}
               >
-                <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-slate-100 h-full">
+                <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-slate-100 h-full overflow-hidden">
                   {/* Gradient accent */}
-                  <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${testimonial.color} rounded-t-2xl`} />
+                  <div className={`absolute -top-px -left-px -right-px h-2 bg-gradient-to-r ${testimonial.color} rounded-t-2xl`} />
                   
                   {/* Avatar */}
                   <div className={`w-12 h-12 bg-gradient-to-r ${testimonial.color} rounded-full flex items-center justify-center text-white font-bold text-sm mb-4`}>
@@ -192,9 +192,9 @@ export default function TestimonialsCarousel() {
                 key={`${testimonial.name}-${index}`}
                 className="flex-shrink-0 w-96"
               >
-                <div className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-slate-200 h-full">
+                <div className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-slate-200 h-full overflow-hidden">
                   {/* Gradient accent */}
-                  <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${testimonial.color} rounded-t-2xl`} />
+                  <div className={`absolute -top-px -left-px -right-px h-2 bg-gradient-to-r ${testimonial.color} rounded-t-2xl`} />
                   
                   {/* Avatar */}
                   <div className={`w-12 h-12 bg-gradient-to-r ${testimonial.color} rounded-full flex items-center justify-center text-white font-bold text-sm mb-4`}>

@@ -43,7 +43,7 @@ export default function ServiceCards() {
           return (
             <motion.div
               key={service.title}
-              className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:border-azure-200 transition-all duration-300 cursor-pointer group"
+              className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:border-azure-200 transition-all duration-300 group"
               whileHover={{ 
                 scale: 1.02,
                 y: -4

@@ -39,10 +39,12 @@ export default function Home() {
         <CaseBlogGridServer />
       </section>
 
-      {/* Testimonials Section */}
+      {/* Testimonials Section - TEMPORARILY HIDDEN */}
+      {/* 
       <section id="testimonials" className="py-20 bg-white scroll-mt-16">
         <TestimonialsCarousel />
       </section>
+      */}
 
       {/* CTA Banner */}
       <CtaBanner />

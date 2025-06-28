@@ -42,6 +42,21 @@ export default function Header() {
         paddingRight: `${sidePadding}px`,
       }}
     >
+      {/* Backdrop blur fade effect above nav pill */}
+      {scrollProgress > 0.1 && (
+        <div 
+          className="absolute left-0 right-0 pointer-events-none transition-all duration-500"
+          style={{
+            top: '0px',
+            height: `${topPadding + 25}px`, // Only extends to just above the pill
+            background: `rgba(248, 250, 255, ${scrollProgress * 0.8})`,
+            backdropFilter: `blur(${interpolate(0, 4, scrollProgress)}px)`,
+            maskImage: `radial-gradient(ellipse 200% 100% at 50% 0%, black 0%, black 40%, transparent 100%)`,
+            WebkitMaskImage: `radial-gradient(ellipse 200% 100% at 50% 0%, black 0%, black 40%, transparent 100%)`,
+            opacity: Math.min(scrollProgress * 1.3, 1),
+          }}
+        />
+      )}
       <div 
         className="mx-auto transition-all duration-300 ease-out border border-white/20"
         style={{
@@ -77,7 +92,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden min-[1300px]:flex items-center space-x-8">
               <Link href="#what-we-do" className="text-slate-600 hover:text-azure-600 transition-colors">
                 Services
               </Link>
@@ -93,26 +108,28 @@ export default function Header() {
               <Link href="#case-blog" className="text-slate-600 hover:text-azure-600 transition-colors">
                 Case Studies
               </Link>
-              <Link 
-                href="#contact" 
+              <a 
+                href="https://calendly.com/d/cv2j-t66-djr/intro-with-lattice-partners"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-azure-600 text-white px-6 py-2 rounded-lg hover:bg-azure-700 transition-all duration-200"
               >
                 Book a Consultation
-              </Link>
+              </a>
             </nav>
 
-            {/* Mobile menu button */}
+            {/* Mobile/Tablet menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-slate-600 hover:text-azure-600 hover:bg-light-blue-bg transition-all duration-200"
+              className="min-[1300px]:hidden p-2 rounded-lg text-slate-600 hover:text-azure-600 hover:bg-light-blue-bg transition-all duration-200"
             >
               <SimpleIcon name={isMenuOpen ? 'close' : 'menu'} size={24} />
             </button>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Mobile/Tablet Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden">
+            <div className="min-[1300px]:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1 border-t border-slate-200">
                 <Link
                   href="#what-we-do"
@@ -149,13 +166,15 @@ export default function Header() {
                 >
                   Case Studies
                 </Link>
-                <Link
-                  href="#contact"
+                <a
+                  href="https://calendly.com/d/cv2j-t66-djr/intro-with-lattice-partners"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block mx-3 mt-4 bg-azure-600 text-white px-6 py-2 rounded-lg hover:bg-azure-700 transition-all duration-200 text-center"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Get Started
-                </Link>
+                  Book a Consultation
+                </a>
               </div>
             </div>
           )}

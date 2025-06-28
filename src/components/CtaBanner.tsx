@@ -93,13 +93,16 @@ export default function CtaBanner() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <motion.button
-            className="bg-azure-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:bg-azure-700 transition-all duration-300 mx-auto"
+          <motion.a
+            href="https://calendly.com/d/cv2j-t66-djr/intro-with-lattice-partners"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-azure-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:bg-azure-700 transition-all duration-300 mx-auto inline-block"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <span>Book a Consultation</span>
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </div>

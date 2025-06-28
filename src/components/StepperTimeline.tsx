@@ -10,7 +10,7 @@ const steps = [
     icon: Search,
     title: "Discovery",
     description: "We interview you and your employees to understand your workflows, challenges, and goals.",
-    features: ["Current workflow analysis", "Process identification", "Bottleneck detection", "Efficiency assessment"],
+    features: ["Team Interviews", "Workflow Mapping", "Persona Validation", "Requirements Brief"],
     color: "from-blue-500 to-azure-600"
   },
   {

@@ -11,8 +11,8 @@ const conversations = [
     answer: "Lattice Partners offers hands-on workshops that get your team confident and productive with AI tools in just weeks, not months."
   },
   {
-    question: "What if I don't even know where to start with AI?",
-    answer: "No problem — we start with discovery. We meet your team, map your workflows, and surface high-impact opportunities where AI can save time, reduce errors, or unlock new capabilities."
+    question: "What if I don't know where to start with AI?",
+    answer: "No problem - we start with discovery. We meet your team, map your workflows, and find high-value opportunities where AI can save time, reduce errors, or unlock new capabilities."
   },
   {
     question: "Do you build custom AI tools too?",
@@ -98,7 +98,7 @@ export default function HeroChat() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 tracking-tight">
             An AI strategy that works<br />
@@ -116,7 +116,7 @@ export default function HeroChat() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-white rounded-2xl shadow-lg border border-slate-200/50 overflow-hidden max-w-2xl mx-auto mb-12"
+          className="bg-white rounded-2xl shadow-lg border border-slate-200/50 overflow-hidden max-w-2xl mx-auto mb-6"
         >
           {/* Chat header */}
           <div className="bg-slate-50 px-6 py-3 border-b border-slate-200/50">
@@ -212,39 +212,41 @@ export default function HeroChat() {
             )}
           </div>
 
-          {/* Input area with CTA button */}
-          <div className="border-t border-slate-200/50 p-4">
-            <div className="flex items-center space-x-3">
-              <input
-                type="text"
-                placeholder="Ask about AI for your business..."
-                className="flex-1 border border-slate-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-azure-600 focus:border-transparent"
-                disabled
-              />
-              <motion.button
-                className="bg-green-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-green-700 transition-colors shadow-lg flex items-center space-x-2 whitespace-nowrap"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                animate={{ 
-                  boxShadow: [
-                    "0 0 0 0 rgba(34, 197, 94, 0.4)",
-                    "0 0 0 8px rgba(34, 197, 94, 0)",
-                    "0 0 0 0 rgba(34, 197, 94, 0)"
-                  ]
-                }}
-                transition={{
-                  boxShadow: {
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }
-                }}
-              >
-                <span className="text-sm">Start your AI Journey</span>
-                <Send className="w-4 h-4" />
-              </motion.button>
-            </div>
-          </div>
+        </motion.div>
+
+        {/* CTA Button - Standalone under chat */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center"
+        >
+                     <motion.a
+             href="https://calendly.com/d/cv2j-t66-djr/intro-with-lattice-partners"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="bg-azure-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:bg-azure-700 transition-all duration-300 inline-flex items-center space-x-3 mx-auto"
+             whileHover={{ scale: 1.05 }}
+             whileTap={{ scale: 0.95 }}
+             animate={{ 
+               boxShadow: [
+                 "0 4px 15px rgba(59, 130, 246, 0.15)",
+                 "0 8px 25px rgba(59, 130, 246, 0.25)",
+                 "0 4px 15px rgba(59, 130, 246, 0.15)"
+               ]
+             }}
+             transition={{
+               boxShadow: {
+                 duration: 3,
+                 repeat: Infinity,
+                 ease: "easeInOut"
+               }
+             }}
+           >
+             <Sparkles className="w-5 h-5" />
+             <span>Start Your AI Journey</span>
+             <Send className="w-5 h-5" />
+           </motion.a>
         </motion.div>
       </div>
     </div>
