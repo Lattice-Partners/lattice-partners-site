@@ -2,7 +2,7 @@ import Header from '@/components/Header'
 import HeroChat from '@/components/HeroChat'
 import ServiceCards from '@/components/ServiceCards'
 import StepperTimeline from '@/components/StepperTimeline'
-import TestimonialsCarousel from '@/components/TestimonialsCarousel'
+// import TestimonialsCarousel from '@/components/TestimonialsCarousel' // Temporarily disabled
 import CaseBlogGridServer from '@/components/CaseBlogGridServer'
 import CtaBanner from '@/components/CtaBanner'
 import Footer from '@/components/Footer'
