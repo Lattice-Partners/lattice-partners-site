@@ -20,16 +20,16 @@ export const metadata: Metadata = {
   creator: "Lattice Partners",
   publisher: "Lattice Partners",
   openGraph: {
-    title: "Lattice Partners - Your Partner for AI Adoption",
-    description: "Transform your business with AI. We help companies discover, implement, and scale AI solutions that drive real results.",
+    title: "Lattice Partners - An AI Strategy That Works For You",
+    description: "Leverage AI to save thousands of employee hours a year. We help companies discover, implement, and scale AI solutions that drive real results.",
     url: "https://lattice-partners.com",
     siteName: "Lattice Partners",
     images: [
       {
-        url: "https://lattice-partners.com/logos/lattice-partners-logo.png",
+        url: "https://lattice-partners.com/og-banner.png",
         width: 1200,
         height: 630,
-        alt: "Lattice Partners - AI Consulting & Implementation",
+        alt: "Lattice Partners - An AI strategy that works for you. Leverage AI to save thousands of employee hours a year.",
         type: "image/png",
       },
     ],
@@ -39,12 +39,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lattice Partners - Your Partner for AI Adoption",
-    description: "Transform your business with AI. We help companies discover, implement, and scale AI solutions that drive real results.",
+    title: "Lattice Partners - An AI Strategy That Works For You",
+    description: "Leverage AI to save thousands of employee hours a year. We help companies discover, implement, and scale AI solutions that drive real results.",
     images: [
       {
-        url: "https://lattice-partners.com/logos/lattice-partners-logo.png",
-        alt: "Lattice Partners - AI Consulting & Implementation",
+        url: "https://lattice-partners.com/og-banner.png",
+        alt: "Lattice Partners - An AI strategy that works for you. Leverage AI to save thousands of employee hours a year.",
         width: 1200,
         height: 630,
       },
