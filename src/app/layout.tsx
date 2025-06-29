@@ -55,19 +55,29 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
     ],
     shortcut: "/favicon.ico",
-    apple: "/logos/lattice-partners-logo.png",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
     other: [
       {
         rel: "apple-touch-icon-precomposed",
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+      },
+      {
+        rel: "mask-icon",
         url: "/logos/lattice-partners-logo.png",
+        color: "#3b82f6",
       },
     ],
   },
   metadataBase: new URL("https://lattice-partners.com"),
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
