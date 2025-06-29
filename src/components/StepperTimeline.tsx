@@ -65,118 +65,108 @@ const dashboardSystems = [
 
 const codeSnippets = [
   {
-    filename: "ai_workflow.py",
-    content: `import openai
-from datetime import datetime
-
-class AIWorkflowManager:
-    def __init__(self, api_key):
-        self.client = openai.OpenAI(api_key=api_key)
-        
-    def process_document(self, document):
-        """Extract key insights from documents"""
-        response = self.client.chat.completions.create(
-            model="gpt-4",
+    filename: "document_ai.py",
+    content: `# Advanced document processing with GPT-4
+async def analyze_contracts(documents):
+    client = OpenAI(api_key=settings.OPENAI_KEY)
+    
+    system_prompt = """
+    Extract key contract terms, risks, and compliance issues.
+    Format as structured JSON with confidence scores.
+    """
+    
+    results = []
+    for doc in documents:
+        response = await client.chat.completions.acreate(
+            model="gpt-4-turbo",
             messages=[
-                {"role": "system", "content": "Extract key insights"},
-                {"role": "user", "content": document}
-            ]
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": doc.text}
+            ],
+            temperature=0.1,
+            response_format={"type": "json_object"}
         )
-        return response.choices[0].message.content
         
-    def automate_task(self, task_description):
-        """Generate automation workflow"""
-        workflow = self.client.chat.completions.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": "Create automation steps"},
-                {"role": "user", "content": task_description}
-            ]
-        )
-        return self.execute_workflow(workflow)`
+        analysis = json.loads(response.choices[0].message.content)
+        analysis['doc_id'] = doc.id
+        analysis['confidence'] = calculate_confidence(analysis)
+        results.append(analysis)
+        
+    await batch_save_results(results)
+    return results`
   },
   {
-    filename: "data_processor.js",
-    content: `const axios = require('axios');
-
-class DataProcessor {
-    constructor(apiEndpoint) {
-        this.apiEndpoint = apiEndpoint;
-        this.processedCount = 0;
+    filename: "smart_routing.js",
+    content: `// Intelligent customer support routing
+const routeTicket = async (ticket) => {
+    const embedding = await generateEmbedding(ticket.content);
+    const similarity = await vectorSearch(embedding);
+    
+    const prompt = \`
+    Ticket: \${ticket.content}
+    Similar cases: \${similarity.top_matches}
+    
+    Route to: [sales|support|technical|billing]
+    Urgency: [low|medium|high|critical]
+    Confidence: [0-100]
+    \`;
+    
+    const routing = await openai.completions.create({
+        model: "gpt-4o",
+        prompt: prompt,
+        max_tokens: 150,
+        temperature: 0.2
+    });
+    
+    const decision = parseRouting(routing.choices[0].text);
+    
+    if (decision.confidence > 85) {
+        await autoRoute(ticket, decision.department);
+        await notifyAgent(decision.agent_id, ticket);
+    } else {
+        await escalateToHuman(ticket, decision);
     }
     
-    async processCustomerData(customerData) {
-        try {
-            const insights = await this.generateInsights(customerData);
-            const recommendations = await this.getRecommendations(insights);
-            
-            await this.saveResults({
-                customer: customerData.id,
-                insights: insights,
-                recommendations: recommendations,
-                timestamp: new Date().toISOString()
-            });
-            
-            this.processedCount++;
-            return { success: true, insights, recommendations };
-        } catch (error) {
-            console.error('Processing failed:', error);
-            return { success: false, error: error.message };
-        }
-    }
-    
-    async generateInsights(data) {
-        const response = await axios.post(\`\${this.apiEndpoint}/analyze\`, {
-            data: data,
-            model: 'advanced-analytics'
-        });
-        return response.data.insights;
-    }`
+    return decision;
+};`
   },
   {
-    filename: "integration.py",
-    content: `from flask import Flask, request, jsonify
-import requests
-import json
-
-app = Flask(__name__)
-
-@app.route('/webhook/process', methods=['POST'])
-def process_webhook():
-    """Handle incoming workflow triggers"""
-    data = request.json
-    
-    # Validate and process the incoming data
-    if validate_request(data):
-        result = trigger_ai_workflow(data)
-        return jsonify({
-            'status': 'success',
-            'workflow_id': result.get('id'),
-            'estimated_completion': '2-5 minutes'
-        })
-    
-    return jsonify({'status': 'error', 'message': 'Invalid request'}), 400
-
-def trigger_ai_workflow(data):
-    """Trigger AI processing workflow"""
-    workflow_config = {
-        'input_data': data,
-        'processing_steps': [
-            'data_validation',
-            'ai_analysis', 
-            'result_generation',
-            'notification_dispatch'
-        ],
-        'priority': data.get('priority', 'normal')
-    }
-    
-    response = requests.post(
-        'http://ai-processor/v1/workflows',
-        json=workflow_config,
-        headers={'Authorization': f'Bearer {get_api_token()}'}
-    )
-    
-    return response.json()`
+    filename: "workflow_engine.py",
+    content: `# Dynamic workflow optimization
+class WorkflowOptimizer:
+    def __init__(self):
+        self.llm = ChatOpenAI(model="gpt-4-turbo")
+        self.memory = ConversationBufferMemory()
+        
+    async def optimize_process(self, workflow_data):
+        # Analyze current bottlenecks
+        bottlenecks = await self.identify_bottlenecks(workflow_data)
+        
+        optimization_prompt = f"""
+        Current workflow: {workflow_data['steps']}
+        Bottlenecks: {bottlenecks}
+        Performance metrics: {workflow_data['metrics']}
+        
+        Suggest 3 optimization strategies with:
+        - Automation opportunities
+        - Tool recommendations  
+        - Expected ROI
+        """
+        
+        chain = LLMChain(llm=self.llm, prompt=optimization_prompt)
+        suggestions = await chain.arun(
+            workflow=workflow_data,
+            bottlenecks=bottlenecks
+        )
+        
+        # Validate suggestions with simulation
+        validated = await self.simulate_changes(suggestions)
+        
+        return {
+            'optimizations': validated,
+            'projected_savings': self.calculate_savings(validated),
+            'implementation_time': self.estimate_effort(validated)
+        }`
   }
 ]
 
@@ -218,6 +208,7 @@ const DiscoveryAnimation = () => {
             className="flex items-center text-sm text-slate-600"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.4, delay: idx * 0.2 }}
           >
             <div className="w-2 h-2 rounded-full bg-azure-600 mr-3"></div>
@@ -315,10 +306,20 @@ const ImplementationAnimation = () => {
     }
     
     return line
-      .replace(/(\bimport\b|\bfrom\b|\bclass\b|\bdef\b|\bconst\b|\basync\b|\bawait\b)/g, '<span class="text-purple-600 font-medium">$1</span>')
-      .replace(/(\bif\b|\belse\b|\btry\b|\bexcept\b|\breturn\b)/g, '<span class="text-blue-600 font-medium">$1</span>')
-      .replace(/([\'\"`].*?[\'\"`])/g, '<span class="text-green-600">$1</span>')
-      .replace(/(#.*$)/g, '<span class="text-slate-500 italic">$1</span>')
+      // Function names and method calls - Orange
+      .replace(/(\w+)(\()/g, '<span class="text-orange-600">$1</span>$2')
+      // Keywords - Blue (fewer keywords)
+      .replace(/(\bclass\b|\bdef\b|\basync\b|\breturn\b|\bawait\b)/g, '<span class="text-blue-600 font-medium">$1</span>')
+      // Strings - Green
+      .replace(/([\'\"`][^\'\"]*[\'\"`])/g, '<span class="text-green-600">$1</span>')
+      // Variables and objects - Default slate
+      .replace(/(\w+)(\s*=)/g, '<span class="text-slate-700">$1</span>$2')
+      // Numbers - Red/Pink
+      .replace(/\b(\d+\.?\d*)\b/g, '<span class="text-red-500">$1</span>')
+      // Comments - Light gray
+      .replace(/(#.*$)/g, '<span class="text-slate-400 italic">$1</span>')
+      // Operators - Amber
+      .replace(/(\+|\-|\*|\/|=|==|!=|<=|>=|<|>)/g, '<span class="text-amber-600">$1</span>')
   }
 
   return (
@@ -334,13 +335,15 @@ const ImplementationAnimation = () => {
           </div>
         </div>
         
-        {/* Code Content - Seamless scroll */}
+        {/* Code Content - Seamless infinite scroll */}
         <div className="relative h-32 overflow-hidden">
           <motion.div
             className="absolute inset-0"
-            animate={{ y: [0, -300] }}
+            animate={{ 
+              y: [0, -240] // Scroll exactly one set of snippets height
+            }}
             transition={{
-              duration: 12,
+              duration: 15,
               repeat: Infinity,
               ease: "linear",
               repeatType: "loop"
@@ -432,6 +435,7 @@ const LaunchScaleAnimation = () => {
               key={system.id}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
               className="bg-white rounded-lg p-3 border border-slate-200 hover:shadow-sm transition-all duration-200"
             >
@@ -450,6 +454,7 @@ const LaunchScaleAnimation = () => {
                     <motion.div
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: idx * 0.2 + 0.5 }}
                     >
                       <CheckCircle className="w-5 h-5 text-green-500" />
@@ -505,6 +510,7 @@ export default function StepperTimeline() {
                 key={step.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white rounded-xl p-6 border border-slate-200 hover:shadow-lg transition-all duration-300 group"
               >

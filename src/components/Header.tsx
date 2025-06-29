@@ -99,9 +99,9 @@ export default function Header() {
               <Link href="#how-we-help" className="text-slate-600 hover:text-azure-600 transition-colors">
                 Our Process
               </Link>
-              <Link href="#testimonials" className="text-slate-600 hover:text-azure-600 transition-colors">
+              {/* <Link href="#testimonials" className="text-slate-600 hover:text-azure-600 transition-colors">
                 Testimonials
-              </Link>
+              </Link> */}
               <Link href="#about" className="text-slate-600 hover:text-azure-600 transition-colors">
                 About Us
               </Link>
@@ -145,13 +145,13 @@ export default function Header() {
                 >
                   Our Process
                 </Link>
-                <Link
+                {/* <Link
                   href="#testimonials"
                   className="block px-3 py-2 text-slate-600 hover:text-azure-600 hover:bg-light-blue-bg rounded-lg transition-all duration-200"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Testimonials
-                </Link>
+                </Link> */}
                 <Link
                   href="#about"
                   className="block px-3 py-2 text-slate-600 hover:text-azure-600 hover:bg-light-blue-bg rounded-lg transition-all duration-200"
