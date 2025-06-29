@@ -73,7 +73,7 @@ export default function HeroChat() {
   }, [])
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-28">
+    <div className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28">
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-base-bg to-light-blue-bg opacity-60" />
       
@@ -101,7 +101,8 @@ export default function HeroChat() {
           className="text-center mb-8"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 tracking-tight">
-            An AI strategy that works<br />
+            An AI strategy that works<br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
             <span className="bg-gradient-to-r from-azure-600 to-gradient-end bg-clip-text text-transparent">
               for you
             </span>
