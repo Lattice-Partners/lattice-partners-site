@@ -22,11 +22,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Lattice Partners - An AI Strategy That Works For You",
     description: "Leverage AI to save thousands of employee hours a year. We help companies discover, implement, and scale AI solutions that drive real results.",
-    url: "https://lattice-partners.com",
+    url: "https://www.latticepartners.ai",
     siteName: "Lattice Partners",
     images: [
       {
-        url: "https://lattice-partners.com/og-banner.png",
+        url: "https://www.latticepartners.ai/og-banner.png",
         width: 1200,
         height: 630,
         alt: "Lattice Partners - An AI strategy that works for you. Leverage AI to save thousands of employee hours a year.",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     description: "Leverage AI to save thousands of employee hours a year. We help companies discover, implement, and scale AI solutions that drive real results.",
     images: [
       {
-        url: "https://lattice-partners.com/og-banner.png",
+        url: "https://www.latticepartners.ai/og-banner.png",
         alt: "Lattice Partners - An AI strategy that works for you. Leverage AI to save thousands of employee hours a year.",
         width: 1200,
         height: 630,
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     // LinkedIn specific tags
     "linkedin:owner": "lattice-partners",
     // WhatsApp and Telegram
-    "whatsapp:image": "https://lattice-partners.com/logos/lattice-partners-logo.png",
+    "whatsapp:image": "https://www.latticepartners.ai/og-banner.png",
     // Slack preview
     "slack-app-id": "lattice-partners",
     // Additional social platform support
@@ -75,8 +75,8 @@ export const metadata: Metadata = {
     // Schema.org markup
     "schema:type": "Organization",
     "schema:name": "Lattice Partners",
-    "schema:url": "https://lattice-partners.com",
-    "schema:logo": "https://lattice-partners.com/logos/lattice-partners-logo.png",
+    "schema:url": "https://www.latticepartners.ai",
+    "schema:logo": "https://www.latticepartners.ai/logos/lattice-partners-logo.png",
     "schema:description": "Transform your business with AI. We help companies discover, implement, and scale AI solutions that drive real results.",
     // Mobile app banners
     "apple-mobile-web-app-capable": "yes",
@@ -106,7 +106,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  metadataBase: new URL("https://lattice-partners.com"),
+  metadataBase: new URL("https://www.latticepartners.ai"),
   manifest: "/site.webmanifest",
 };
 
@@ -120,9 +120,9 @@ export default function RootLayout({
     "@type": "Organization",
     "name": "Lattice Partners",
     "description": "Transform your business with AI. We help companies discover, implement, and scale AI solutions that drive real results.",
-    "url": "https://lattice-partners.com",
-    "logo": "https://lattice-partners.com/logos/lattice-partners-logo.png",
-    "image": "https://lattice-partners.com/logos/lattice-partners-logo.png",
+    "url": "https://www.latticepartners.ai",
+    "logo": "https://www.latticepartners.ai/logos/lattice-partners-logo.png",
+    "image": "https://www.latticepartners.ai/og-banner.png",
     "sameAs": [
       "https://www.linkedin.com/company/lattice-partners"
     ],
