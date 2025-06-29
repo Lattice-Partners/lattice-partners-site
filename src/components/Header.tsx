@@ -76,7 +76,7 @@ export default function Header() {
             transform: `scale(${scale / 100})`,
           }}
         >
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-12 sm:h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
               <Image

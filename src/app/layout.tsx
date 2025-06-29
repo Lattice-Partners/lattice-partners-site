@@ -26,21 +26,31 @@ export const metadata: Metadata = {
     siteName: "Lattice Partners",
     images: [
       {
-        url: "/logos/lattice-partners-logo.png",
+        url: "https://lattice-partners.com/logos/lattice-partners-logo.png",
         width: 1200,
         height: 630,
         alt: "Lattice Partners - AI Consulting & Implementation",
+        type: "image/png",
       },
     ],
     locale: "en_US",
     type: "website",
+    countryName: "United States",
   },
   twitter: {
     card: "summary_large_image",
     title: "Lattice Partners - Your Partner for AI Adoption",
     description: "Transform your business with AI. We help companies discover, implement, and scale AI solutions that drive real results.",
-    images: ["/logos/lattice-partners-logo.png"],
+    images: [
+      {
+        url: "https://lattice-partners.com/logos/lattice-partners-logo.png",
+        alt: "Lattice Partners - AI Consulting & Implementation",
+        width: 1200,
+        height: 630,
+      },
+    ],
     creator: "@lattice_partners",
+    site: "@lattice_partners",
   },
   robots: {
     index: true,
@@ -52,6 +62,26 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  other: {
+    // LinkedIn specific tags
+    "linkedin:owner": "lattice-partners",
+    // WhatsApp and Telegram
+    "whatsapp:image": "https://lattice-partners.com/logos/lattice-partners-logo.png",
+    // Slack preview
+    "slack-app-id": "lattice-partners",
+    // Additional social platform support
+    "facebook-domain-verification": "lattice-partners-verification",
+    // Schema.org markup
+    "schema:type": "Organization",
+    "schema:name": "Lattice Partners",
+    "schema:url": "https://lattice-partners.com",
+    "schema:logo": "https://lattice-partners.com/logos/lattice-partners-logo.png",
+    "schema:description": "Transform your business with AI. We help companies discover, implement, and scale AI solutions that drive real results.",
+    // Mobile app banners
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "default",
+    "apple-mobile-web-app-title": "Lattice Partners",
   },
   icons: {
     icon: [
@@ -85,8 +115,41 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Lattice Partners",
+    "description": "Transform your business with AI. We help companies discover, implement, and scale AI solutions that drive real results.",
+    "url": "https://lattice-partners.com",
+    "logo": "https://lattice-partners.com/logos/lattice-partners-logo.png",
+    "image": "https://lattice-partners.com/logos/lattice-partners-logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/lattice-partners"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Business",
+      "url": "https://calendly.com/d/cv2j-t66-djr/intro-with-lattice-partners"
+    },
+    "service": {
+      "@type": "Service",
+      "name": "AI Consulting & Implementation",
+      "description": "AI strategy, implementation, and scaling services for businesses",
+      "provider": {
+        "@type": "Organization",
+        "name": "Lattice Partners"
+      }
+    }
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

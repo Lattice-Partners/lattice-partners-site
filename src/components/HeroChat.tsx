@@ -73,7 +73,7 @@ export default function HeroChat() {
   }, [])
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28">
+    <div className="relative min-h-screen flex flex-col justify-start sm:items-center sm:justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28">
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-base-bg to-light-blue-bg opacity-60" />
       
@@ -98,16 +98,16 @@ export default function HeroChat() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8"
+          className="text-center mb-4 sm:mb-8"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 tracking-tight">
+                      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-3 sm:mb-6 tracking-tight">
             An AI strategy that works<br className="hidden sm:block" />
             <span className="sm:hidden"> </span>
             <span className="bg-gradient-to-r from-azure-600 to-gradient-end bg-clip-text text-transparent">
               for you
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-4 sm:mb-8">
             Leverage AI to save thousands of employee hours a year.
           </p>
         </motion.div>
@@ -135,7 +135,7 @@ export default function HeroChat() {
           </div>
 
           {/* Chat messages */}
-          <div className="p-6 space-y-4 h-[240px] flex flex-col justify-start">
+          <div className="p-6 space-y-4 h-[280px] sm:h-[240px] flex flex-col justify-start">
             {/* User message */}
             <motion.div
               initial={{ opacity: 0, x: 10 }}
@@ -147,7 +147,7 @@ export default function HeroChat() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="flex justify-end"
             >
-              <div className="bg-azure-600 text-white rounded-2xl rounded-tr-md px-4 py-3 max-w-xs">
+              <div className="bg-azure-600 text-white rounded-2xl rounded-tr-md px-4 py-3 max-w-sm sm:max-w-xs">
                 <p className="text-sm font-medium">
                   {conversations[currentConversationIndex].question}
                 </p>
@@ -165,7 +165,7 @@ export default function HeroChat() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="flex justify-start"
             >
-              <div className="bg-slate-100 text-slate-800 rounded-2xl rounded-tl-md px-4 py-3 max-w-xs">
+              <div className="bg-slate-100 text-slate-800 rounded-2xl rounded-tl-md px-4 py-3 max-w-sm sm:max-w-xs">
                 {showAnswer && (
                   <p className="text-sm leading-relaxed" suppressHydrationWarning={true}>
                     <Typewriter
