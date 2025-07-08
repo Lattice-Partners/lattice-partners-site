@@ -1,5 +1,6 @@
 'use client'
 
+import { sendGAEvent } from '@next/third-parties/google'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 
@@ -100,6 +101,9 @@ export default function CtaBanner() {
             className="bg-azure-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:bg-azure-700 transition-all duration-300 mx-auto inline-block"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              sendGAEvent('event', 'buttonClicked', { value: 'Book a Consultation - CTA Banner' })
+            }}
           >
             <span>Book a Consultation</span>
           </motion.a>

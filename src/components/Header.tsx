@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import SimpleIcon from './SimpleIcon'
+import { sendGAEvent } from '@next/third-parties/google'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -113,6 +114,9 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-azure-600 text-white px-6 py-2 rounded-lg hover:bg-azure-700 transition-all duration-200"
+                onClick={() => {
+                  sendGAEvent('event', 'buttonClicked', { value: 'Book a Consultation - Desktop' })
+                }}
               >
                 Book a Consultation
               </a>
@@ -171,7 +175,10 @@ export default function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block mx-3 mt-4 bg-azure-600 text-white px-6 py-2 rounded-lg hover:bg-azure-700 transition-all duration-200 text-center"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false)
+                    sendGAEvent('event', 'buttonClicked', { value: 'Book a Consultation - Mobile' })
+                  }}
                 >
                   Book a Consultation
                 </a>
