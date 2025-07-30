@@ -66,7 +66,6 @@ A modern, responsive landing page built with Next.js, featuring a bright design 
 - **Typography**: React Simple Typewriter
 - **Icons**: Lucide React
 - **Language**: TypeScript
-- **Database**: Prisma with PostgreSQL
 - **Authentication**: NextAuth.js
 - **Content Management**: MDX for course content
 
@@ -92,7 +91,6 @@ src/
 │   └── hero.json           # Hero content for easy editing
 ├── lib/
 │   ├── utils.ts            # Utility functions
-│   └── prisma.ts           # Database client
 └── tailwind.config.ts      # Custom design tokens
 ```
 
