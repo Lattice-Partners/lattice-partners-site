@@ -10,7 +10,7 @@ const navigationLinks = [
   { name: 'Services', href: '#what-we-do' },
   { name: 'Our Process', href: '#how-we-help' },
   { name: 'Case Studies', href: '#case-blog' },
-  { name: 'Contact Us', href: 'https://calendly.com/d/cv2j-t66-djr/intro-with-lattice-partners' }
+  { name: 'Contact Us', href: 'https://calendar.app.google/NuVomh6DP35bz7Bq7' }
 ]
 
 const socialLinks = [

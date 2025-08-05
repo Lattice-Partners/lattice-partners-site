@@ -140,7 +140,7 @@ export default function RootLayout({
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Business",
-      "url": "https://calendly.com/d/cv2j-t66-djr/intro-with-lattice-partners"
+      "url": "https://calendar.app.google/NuVomh6DP35bz7Bq7"
     },
     "service": {
       "@type": "Service",

@@ -110,7 +110,7 @@ export default function Header() {
                 Case Studies
               </Link>
               <a 
-                href="https://calendly.com/d/cv2j-t66-djr/intro-with-lattice-partners"
+                href="https://calendar.app.google/NuVomh6DP35bz7Bq7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-azure-600 text-white px-6 py-2 rounded-lg hover:bg-azure-700 transition-all duration-200"
@@ -171,7 +171,7 @@ export default function Header() {
                   Case Studies
                 </Link>
                 <a
-                  href="https://calendly.com/d/cv2j-t66-djr/intro-with-lattice-partners"
+                  href="https://calendar.app.google/NuVomh6DP35bz7Bq7"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block mx-3 mt-4 bg-azure-600 text-white px-6 py-2 rounded-lg hover:bg-azure-700 transition-all duration-200 text-center"
